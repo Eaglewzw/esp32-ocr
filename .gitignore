@@ -1,0 +1,15 @@
+# ESP-IDF build output
+build/
+
+# Component manager
+managed_components/
+dependencies.lock
+
+# IDE
+.vscode/
+.claude/
+.clangd
+
+# OS
+.DS_Store
+Thumbs.db
