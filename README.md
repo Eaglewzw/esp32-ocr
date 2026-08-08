@@ -1,40 +1,44 @@
 # ESP32-P4 快递面单 OCR
 
-基于 ESP32-P4 + LVGL 的端侧 OCR 识别系统，摄像头拍摄快递面单，触摸屏实时显示识别结果。
+基于 [ESP-DL](https://github.com/espressif/esp-dl) **PP-OCRv6** 模型的端侧 OCR 识别系统。本项目复现了乐鑫 esp-dl 中的 OCR 示例，并将其移植到 **ESP32-P4 + Waveshare 3.5 寸触摸屏** 这一不同的硬件平台上。
+
+> **与 esp-dl 原版的关键差异**：esp-dl 官方 OCR 示例默认运行在 ESP32-S3（如 ESP32-S3-EYE、Korvo-2）上。本项目在 ESP32-P4 上复现了整个 Pipeline——JPEG 解码 → PP-OCRv6 文字检测与识别 → LVGL 触摸屏结果展示，并针对 P4 的双核架构、大容量 Flash 和 PPA 硬件加速做了专项适配。
+
+## 检测效果
+
+| 快递面单 | 安全号码识别 |
+|:---:|:---:|
+| ![快递面单 OCR 识别结果](docs/ocr_result_label_01.png) | ![安全号码 OCR 识别结果](docs/ocr_result_label_02.png) |
 
 ## 硬件
 
-- 主控：[ESP32-P4]（双核 400MHz）
-- 开发板：[Waveshare ESP32-P4-WIFI6-Touch-LCD-XC]（3.5 寸 800×800 触摸屏）
-- 存储：16MB Flash / 7MB SPIFFS
+| 模块 | 型号 |
+|:---|:---|
+| 主控 | [ESP32-P4](https://www.espressif.com/en/products/socs/esp32-p4)（双核 400 MHz, 32 MB PSRAM） |
+| 开发板 | [Waveshare ESP32-P4-WIFI6-Touch-LCD-XC](https://www.waveshare.com/wiki/ESP32-P4-WIFI6-Touch-LCD-XC) |
+| 屏幕 | 3.5 寸 800×800 电容触摸屏 |
+| 存储 | 16 MB Flash（8 MB 应用 + 7 MB 字体分区) |
 
-## 核心技术栈
+## 模块划分
 
-[ESP-IDF] 5.5 · [LVGL] 9.4 · Wi-Fi 6 · PSRAM · SD 卡 · 音频播放
+| 模块 | 文件 | 职责 |
+|:---|:---|:---|
+| **app_storage** | `app_storage.cpp/.hpp` | NVS 初始化、字体分区 mmap 挂载、资源读取 |
+| **app_ui** | `app_ui.cpp/.hpp` | LVGL 界面：图片选择器、OCR 预览、结果卡片 |
+| **ocr_pipeline** | `ocr_pipeline.cpp/.hpp` | JPEG 解码 → PP-OCRv6 推理 → 结果格式化 |
+| **demo_images** | `demo_images.cpp/.hpp` | 内置演示图片注册与管理 |
 
-## 开发进度
+## 关键技术点
 
-- [x] LVGL 图形界面 · 触摸驱动 · SD 卡 · 音频
-- [ ] 摄像头采集 · 图像预处理 · 文字检测 · OCR 识别 · 语音播报
-
-## 快速开始
-
-```bash
-source ~/.espressif/v5.5.4/esp-idf/export.sh
-idf.py set-target esp32p4
-idf.py menuconfig   # 选择 LCD 型号、芯片版本
-idf.py build
-idf.py -p /dev/ttyACM0 flash monitor
-```
-
-> **芯片版本**：sdkconfig 默认适配 v1.x，v3.x 芯片需在 menuconfig → `Component config → ESP32P4-specific` 切换。
-> **LCD**：默认 800×800 3.4 寸，4 寸屏在 menuconfig 切换。
+- **双核分工**：Core 0 专跑 LVGL 渲染触摸交互，Core 1 专跑 OCR 推理，通过 FreeRTOS Queue 解耦
+- **模型常驻**：`PPOCRV6` 实例在首次推理后保持加载，后续图片识别无需重新初始化
+- **PPA 加速**：启用 ESP32-P4 的 PPA (Pixel Processing Accelerator) 硬件加速 LVGL 渲染
+- **字体 Flash 映射**：4 MB 完整 CJK 字体通过 `esp_mmap_assets` 直接从 Flash 映射为只读内存，不占用 PSRAM；详见 [`docs/font_flash_mmap.md`](docs/font_flash_mmap.md)
 
 ## 许可
 
-Apache-2.0
+[Apache-2.0](LICENSE)
 
-[ESP32-P4]: https://www.espressif.com/en/products/socs/esp32-p4
-[Waveshare ESP32-P4-WIFI6-Touch-LCD-XC]: https://www.waveshare.com/wiki/ESP32-P4-WIFI6-Touch-LCD-XC
-[ESP-IDF]: https://github.com/espressif/esp-idf
-[LVGL]: https://github.com/lvgl/lvgl
+字体文件授权见：
+- [`main/font_assets/LICENSE-DroidSansFallbackFull.txt`](main/font_assets/LICENSE-DroidSansFallbackFull.txt)
+- [`main/font_assets/LICENSE-demo-fallback.txt`](main/font_assets/LICENSE-demo-fallback.txt)
