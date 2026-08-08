@@ -16,7 +16,7 @@
 |:---|:---|
 | 主控 | [ESP32-P4](https://www.espressif.com/en/products/socs/esp32-p4)（双核 400 MHz, 32 MB PSRAM） |
 | 开发板 | [Waveshare ESP32-P4-WIFI6-Touch-LCD-XC](https://www.waveshare.com/wiki/ESP32-P4-WIFI6-Touch-LCD-XC) |
-| 屏幕 | 3.5 寸 800×800 电容触摸屏 |
+| 屏幕 | 3.5 寸 320×480 电容触摸屏 |
 | 存储 | 16 MB Flash（8 MB 应用 + 7 MB 字体分区) |
 
 ## 模块划分
@@ -33,7 +33,7 @@
 - **双核分工**：Core 0 专跑 LVGL 渲染触摸交互，Core 1 专跑 OCR 推理，通过 FreeRTOS Queue 解耦
 - **模型常驻**：`PPOCRV6` 实例在首次推理后保持加载，后续图片识别无需重新初始化
 - **PPA 加速**：启用 ESP32-P4 的 PPA (Pixel Processing Accelerator) 硬件加速 LVGL 渲染
-- **字体 Flash 映射**：4 MB 完整 CJK 字体通过 `esp_mmap_assets` 直接从 Flash 映射为只读内存，不占用 PSRAM；详见 [`docs/font_flash_mmap.md`](docs/font_flash_mmap.md)
+- **字体 Flash 映射**：约 3.9 MB 完整 CJK 字体通过 `esp_mmap_assets` 直接从 Flash 映射为只读内存，不占用 PSRAM；详见 [`docs/font_flash_mmap.md`](docs/font_flash_mmap.md)
 
 ## 许可
 

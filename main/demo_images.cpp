@@ -40,8 +40,8 @@ const DemoImage *get_demo_images(size_t &count)
             .display_name = "安全号码样例 2",
             .jpeg_data = ocr_example_2_jpg_start,
             .jpeg_size = static_cast<size_t>(ocr_example_2_jpg_end - ocr_example_2_jpg_start),
-            .width = 708,
-            .height = 126,
+            .width = 995,
+            .height = 200,
         },
     };
 
