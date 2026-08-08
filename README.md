@@ -8,7 +8,8 @@
 
 | 快递面单 | 安全号码识别 |
 |:---:|:---:|
-| ![快递面单 OCR 识别结果](docs/ocr_result_label_01.png) | ![安全号码 OCR 识别结果](docs/ocr_result_label_02.png) |
+| <img src="docs/ocr_result_label_01.png" width="80%" alt="快递面单 OCR"/> | <img src="docs/ocr_result_label_02.png" width="80%" alt="安全号码 OCR"/> |
+| <img src="docs/ocr_result_label_04.png" width="80%" alt="快递面单 OCR"/> | <img src="docs/ocr_result_label_03.png" width="80%" alt="安全号码 OCR"/> |
 
 ## 硬件
 
