@@ -1,4 +1,5 @@
 #include "app_ui.hpp"
+#include "app_storage.hpp"
 
 #include "bsp/display.h"
 #include "bsp/esp-bsp.h"
@@ -16,10 +17,8 @@ namespace {
 
 constexpr char TAG[] = "app_ui";
 constexpr size_t FONT_GLYPH_CACHE_SIZE = 256;
+constexpr size_t FALLBACK_GLYPH_CACHE_SIZE = 96;
 constexpr uint32_t RESULT_BATCH_PERIOD_MS = 1;
-
-extern const uint8_t noto_sc_ocr_ttf_start[] asm("_binary_noto_sc_ocr_ttf_start");
-extern const uint8_t noto_sc_ocr_ttf_end[] asm("_binary_noto_sc_ocr_ttf_end");
 
 struct ResultRenderJob {
     app::UiContext *ui = nullptr;
@@ -34,6 +33,24 @@ struct ResultRenderJob {
 const lv_font_t *font_or_default(const lv_font_t *font, const lv_font_t *fallback)
 {
     return font ? font : fallback;
+}
+
+lv_font_t *create_mapped_font(const app::MappedAssetView &asset,
+                              int32_t size,
+                              size_t cache_size)
+{
+    if (!asset.data || asset.size == 0) {
+        return nullptr;
+    }
+    return lv_tiny_ttf_create_data_ex(
+        asset.data, asset.size, size, LV_FONT_KERNING_NONE, cache_size);
+}
+
+void link_font_fallback(lv_font_t *font, const lv_font_t *fallback)
+{
+    if (font) {
+        font->fallback = fallback;
+    }
 }
 
 void reset_preview(app::UiContext &ui)
@@ -276,19 +293,53 @@ bool initialize_ui(UiContext &ui, int lvgl_core_id)
         return false;
     }
 
-    const size_t font_size = noto_sc_ocr_ttf_end - noto_sc_ocr_ttf_start;
-    ui.cjk_font_20 = lv_tiny_ttf_create_data_ex(
-        noto_sc_ocr_ttf_start, font_size, 20, LV_FONT_KERNING_NONE, FONT_GLYPH_CACHE_SIZE);
-    ui.cjk_font_16 = lv_tiny_ttf_create_data_ex(
-        noto_sc_ocr_ttf_start, font_size, 16, LV_FONT_KERNING_NONE, FONT_GLYPH_CACHE_SIZE);
+    MappedAssetView cjk_asset;
+    MappedAssetView demo_fallback_asset;
+    const bool has_cjk_asset = get_font_asset(FontAsset::CjkFull, cjk_asset);
+    const bool has_demo_fallback_asset = get_font_asset(FontAsset::DemoFallback, demo_fallback_asset);
+
+    if (has_demo_fallback_asset) {
+        ui.demo_fallback_font_20 = create_mapped_font(
+            demo_fallback_asset, 20, FALLBACK_GLYPH_CACHE_SIZE);
+        ui.demo_fallback_font_16 = create_mapped_font(
+            demo_fallback_asset, 16, FALLBACK_GLYPH_CACHE_SIZE);
+        link_font_fallback(ui.demo_fallback_font_20, &lv_font_montserrat_20);
+        link_font_fallback(ui.demo_fallback_font_16, &lv_font_montserrat_16);
+    }
+
+    if (has_cjk_asset) {
+        ui.cjk_font_20 = create_mapped_font(cjk_asset, 20, FONT_GLYPH_CACHE_SIZE);
+        ui.cjk_font_16 = create_mapped_font(cjk_asset, 16, FONT_GLYPH_CACHE_SIZE);
+    }
+
+    const lv_font_t *fallback_20 = font_or_default(
+        ui.demo_fallback_font_20, &lv_font_montserrat_20);
+    const lv_font_t *fallback_16 = font_or_default(
+        ui.demo_fallback_font_16, &lv_font_montserrat_16);
+    link_font_fallback(ui.cjk_font_20, fallback_20);
+    link_font_fallback(ui.cjk_font_16, fallback_16);
+
+    // If the full font could not be created, the demo subset still provides a
+    // useful Chinese UI instead of dropping immediately to an ASCII-only font.
+    if (!ui.cjk_font_20) {
+        ui.cjk_font_20 = ui.demo_fallback_font_20;
+    }
+    if (!ui.cjk_font_16) {
+        ui.cjk_font_16 = ui.demo_fallback_font_16;
+    }
     bsp_display_unlock();
 
     if (!ui.cjk_font_16 || !ui.cjk_font_20) {
-        ESP_LOGW(TAG, "Failed to create one or more in-memory CJK fonts; using fallback fonts where possible");
+        ESP_LOGW(TAG, "Failed to create one or more mapped CJK fonts; using fallback fonts where possible");
     }
 
-    ESP_LOGI(TAG, "LVGL initialized on core %d (%dx%d), CJK font loaded from embedded memory",
-             lvgl_core_id, ui.screen_width, ui.screen_height);
+    ESP_LOGI(TAG,
+             "LVGL initialized on core %d (%dx%d), fonts mapped from flash: CJK=%u bytes, fallback=%u bytes",
+             lvgl_core_id,
+             ui.screen_width,
+             ui.screen_height,
+             static_cast<unsigned>(cjk_asset.size),
+             static_cast<unsigned>(demo_fallback_asset.size));
     return true;
 }
 

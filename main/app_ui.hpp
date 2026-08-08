@@ -24,6 +24,8 @@ struct UiContext {
     lv_display_t *display = nullptr;
     lv_font_t *cjk_font_20 = nullptr;
     lv_font_t *cjk_font_16 = nullptr;
+    lv_font_t *demo_fallback_font_20 = nullptr;
+    lv_font_t *demo_fallback_font_16 = nullptr;
     int screen_width = 0;
     int screen_height = 0;
     lv_obj_t *page = nullptr;
