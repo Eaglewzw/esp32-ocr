@@ -1,8 +1,9 @@
+# ESP32-P4 Shipping Label OCR
+
 <p align="center">
   English | <a href="README.zh-CN.md">简体中文</a>
 </p>
 
-# ESP32-P4 Shipping Label OCR
 
 An on-device OCR system powered by the **PP-OCRv6** models from [ESP-DL](https://github.com/espressif/esp-dl). This project reproduces the OCR example from Espressif's esp-dl repository and ports it to a different hardware platform: the **ESP32-P4 with a Waveshare 3.5-inch touchscreen**.
 

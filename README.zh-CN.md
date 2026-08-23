@@ -1,8 +1,8 @@
+# ESP32-P4 快递面单 OCR
+
 <p align="center">
   <a href="README.md">English</a> | 简体中文
 </p>
-
-# ESP32-P4 快递面单 OCR
 
 基于 [ESP-DL](https://github.com/espressif/esp-dl) **PP-OCRv6** 模型的端侧 OCR 识别系统。本项目复现了乐鑫 esp-dl 中的 OCR 示例，并将其移植到 **ESP32-P4 + Waveshare 3.5 寸触摸屏** 这一不同的硬件平台上。
 
