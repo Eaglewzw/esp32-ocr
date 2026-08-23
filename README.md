@@ -1,56 +1,61 @@
-# ESP32-P4 快递面单 OCR
+<p align="center">
+  English | <a href="README.zh-CN.md">简体中文</a>
+</p>
 
-基于 [ESP-DL](https://github.com/espressif/esp-dl) **PP-OCRv6** 模型的端侧 OCR 识别系统。本项目复现了乐鑫 esp-dl 中的 OCR 示例，并将其移植到 **ESP32-P4 + Waveshare 3.5 寸触摸屏** 这一不同的硬件平台上。
+# ESP32-P4 Shipping Label OCR
 
-> **与 esp-dl 原版的关键差异**：esp-dl 官方 OCR 示例默认运行在 ESP32-S3（如 ESP32-S3-EYE、Korvo-2）上。本项目在 ESP32-P4 上复现了整个 Pipeline——JPEG 解码 → PP-OCRv6 文字检测与识别 → LVGL 触摸屏结果展示，并针对 P4 的双核架构、大容量 Flash 和 PPA 硬件加速做了专项适配。
+An on-device OCR system powered by the **PP-OCRv6** models from [ESP-DL](https://github.com/espressif/esp-dl). This project reproduces the OCR example from Espressif's esp-dl repository and ports it to a different hardware platform: the **ESP32-P4 with a Waveshare 3.5-inch touchscreen**.
 
-## 检测效果
+> **Key differences from the original esp-dl example:** Espressif's official OCR example targets ESP32-S3 boards such as the ESP32-S3-EYE and Korvo-2. This project reproduces the complete pipeline on the ESP32-P4—JPEG decoding → PP-OCRv6 text detection and recognition → result display on an LVGL touchscreen—with dedicated adaptations for the P4's dual-core architecture, high-capacity flash, and PPA hardware acceleration.
 
-| 快递面单 | 安全号码识别 |
+## Results
+
+| Shipping labels | Masked phone number recognition |
 |:---:|:---:|
-| <img src="docs/ocr_result_label_01.png" width="80%" alt="快递面单 OCR"/> | <img src="docs/ocr_result_label_02.png" width="80%" alt="安全号码 OCR"/> |
-| <img src="docs/ocr_result_label_04.png" width="80%" alt="快递面单 OCR"/> | <img src="docs/ocr_result_label_03.png" width="80%" alt="安全号码 OCR"/> |
+| <img src="docs/ocr_result_label_01.png" width="80%" alt="Shipping label OCR"/> | <img src="docs/ocr_result_label_02.png" width="80%" alt="Masked phone number OCR"/> |
+| <img src="docs/ocr_result_label_04.png" width="80%" alt="Shipping label OCR"/> | <img src="docs/ocr_result_label_03.png" width="80%" alt="Masked phone number OCR"/> |
 
-## 硬件
+## Hardware
 
-| 模块 | 型号 |
+| Module | Specification |
 |:---|:---|
-| 主控 | [ESP32-P4](https://www.espressif.com/en/products/socs/esp32-p4)（双核 400 MHz, 32 MB PSRAM） |
-| 开发板 | [Waveshare ESP32-P4-WIFI6-Touch-LCD-XC](https://www.waveshare.com/wiki/ESP32-P4-WIFI6-Touch-LCD-XC) |
-| 屏幕 | 3.5 寸 320×480 电容触摸屏 |
-| 存储 | 16 MB Flash（8 MB 应用 + 7 MB 字体分区) |
+| MCU | [ESP32-P4](https://www.espressif.com/en/products/socs/esp32-p4) (dual-core 400 MHz, 32 MB PSRAM) |
+| Development board | [Waveshare ESP32-P4-WIFI6-Touch-LCD-XC](https://www.waveshare.com/wiki/ESP32-P4-WIFI6-Touch-LCD-XC) |
+| Display | 3.5-inch 320×480 capacitive touchscreen |
+| Storage | 16 MB flash (8 MB application + 7 MB font partition) |
 
-## OCR 模型
+## OCR Models
 
-本项目使用 ESP-DL 提供的 **PP-OCRv6** 两阶段模型，由 `pp_ocr_v6` 组件封装：
+This project uses the two-stage **PP-OCRv6** models provided by ESP-DL and packaged by the `pp_ocr_v6` component:
 
-| 阶段 | 模型 | 文件 | 输入规格 | 大小 |
+| Stage | Model | File | Input | Size |
 |:---|:---|:---|:---|:---|
-| 文字检测 | Det (S8) | `pp_ocr_v6_det_s8.espdl` | 整图 → 文本框坐标 | 649 KB |
-| 文字识别 | Rec (S16) | `pp_ocr_v6_rec_s16.espdl` | 48×320 文本行切片 | 2.4 MB |
+| Text detection | Det (S8) | `pp_ocr_v6_det_s8.espdl` | Full image → text box coordinates | 649 KB |
+| Text recognition | Rec (S16) | `pp_ocr_v6_rec_s16.espdl` | 48×320 text-line crop | 2.4 MB |
 
-当前配置为 **SHORT 模式**，总模型体积约 **3 MB**。默认使用 INT16 精度以兼顾准确率与速度；另有 INT8 模型（1.2 MB，更快）和 LONG 模式（48×640，适配长文本行）可选。
+The current configuration uses **SHORT mode**, with a total model size of approximately **3 MB**. INT16 precision is used by default to balance accuracy and speed. INT8 models (1.2 MB, faster) and LONG mode (48×640, for longer text lines) are also available.
 
-## 模块划分
+## Project Structure
 
-| 模块 | 文件 | 职责 |
+| Module | Files | Responsibility |
 |:---|:---|:---|
-| **app_storage** | `app_storage.cpp/.hpp` | NVS 初始化、字体分区 mmap 挂载、资源读取 |
-| **app_ui** | `app_ui.cpp/.hpp` | LVGL 界面：图片选择器、OCR 预览、结果卡片 |
-| **ocr_pipeline** | `ocr_pipeline.cpp/.hpp` | JPEG 解码 → PP-OCRv6 推理 → 结果格式化 |
-| **demo_images** | `demo_images.cpp/.hpp` | 内置演示图片注册与管理 |
+| **app_storage** | `app_storage.cpp/.hpp` | NVS initialization, font partition memory mapping, and asset loading |
+| **app_ui** | `app_ui.cpp/.hpp` | LVGL UI: image selector, OCR preview, and result cards |
+| **ocr_pipeline** | `ocr_pipeline.cpp/.hpp` | JPEG decoding → PP-OCRv6 inference → result formatting |
+| **demo_images** | `demo_images.cpp/.hpp` | Registration and management of built-in demo images |
 
-## 关键技术点
+## Technical Highlights
 
-- **双核分工**：Core 0 专跑 LVGL 渲染触摸交互，Core 1 专跑 OCR 推理，通过 FreeRTOS Queue 解耦
-- **模型常驻**：`PPOCRV6` 实例在首次推理后保持加载，后续图片识别无需重新初始化
-- **PPA 加速**：启用 ESP32-P4 的 PPA (Pixel Processing Accelerator) 硬件加速 LVGL 渲染
-- **字体 Flash 映射**：约 3.9 MB 完整 CJK 字体通过 `esp_mmap_assets` 直接从 Flash 映射为只读内存，不占用 PSRAM；详见 [`docs/font_flash_mmap.md`](docs/font_flash_mmap.md)
+- **Dual-core workload separation:** Core 0 handles LVGL rendering and touchscreen interaction, while Core 1 runs OCR inference; the two are decoupled through a FreeRTOS queue.
+- **Persistent models:** The `PPOCRV6` instance remains loaded after the first inference, avoiding repeated initialization for subsequent images.
+- **PPA acceleration:** The ESP32-P4's PPA (Pixel Processing Accelerator) accelerates LVGL rendering.
+- **Memory-mapped font assets:** The complete CJK font, approximately 3.9 MB, is mapped directly from flash as read-only memory with `esp_mmap_assets`, consuming no PSRAM. See [`docs/font_flash_mmap.md`](docs/font_flash_mmap.md) for details.
 
-## 许可
+## License
 
 [Apache-2.0](LICENSE)
 
-字体文件授权见：
+Font licenses:
+
 - [`main/font_assets/LICENSE-DroidSansFallbackFull.txt`](main/font_assets/LICENSE-DroidSansFallbackFull.txt)
 - [`main/font_assets/LICENSE-demo-fallback.txt`](main/font_assets/LICENSE-demo-fallback.txt)
