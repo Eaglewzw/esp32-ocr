@@ -119,10 +119,13 @@ void result_gesture_callback(lv_event_t *event)
 {
     auto &ui = *static_cast<app::UiContext *>(lv_event_get_user_data(event));
     lv_indev_t *indev = lv_indev_active();
-    if (!indev || lv_indev_get_gesture_dir(indev) != LV_DIR_LEFT || ui.navigation_pending) {
+    // On this board, the user observed a physical right swipe reporting LEFT.
+    // Use the opposite event for physical left-swipe navigation.
+    if (!indev || lv_indev_get_gesture_dir(indev) != LV_DIR_RIGHT || ui.navigation_pending) {
         return;
     }
 
+    ESP_LOGI(TAG, "Return gesture received (raw direction: RIGHT)");
     lv_indev_wait_release(indev);
     ui.navigation_pending = true;
     if (lv_async_call(invoke_return_callback, &ui) != LV_RESULT_OK) {

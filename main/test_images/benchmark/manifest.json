@@ -1,0 +1,59 @@
+{
+  "canvas": [
+    736,
+    736
+  ],
+  "font_size_px": 40,
+  "text_origin": [
+    48,
+    320
+  ],
+  "font": "main/font_assets/cjk_full.ttf",
+  "font_sha256": "acb6440a713d880a13a21b468ba7cd43f5a2b2934972e51be791c880730777b8",
+  "background": "white",
+  "foreground": "black",
+  "jpeg_quality": 95,
+  "jpeg_subsampling": 0,
+  "pillow_version": "9.0.1",
+  "samples": [
+    {
+      "id": "line15",
+      "text": "上海市徐汇区田林路智能硬件中心",
+      "characters": 15,
+      "text_bbox": [
+        48,
+        329,
+        648,
+        367
+      ],
+      "path": "main/test_images/benchmark/line15.jpg",
+      "sha256": "17747ed2fac2e4cc4f5ad6bed2a62e369403b577ad86de2b19e6725c11c51c93"
+    },
+    {
+      "id": "line2",
+      "text": "上海",
+      "characters": 2,
+      "text_bbox": [
+        48,
+        329,
+        128,
+        366
+      ],
+      "path": "main/test_images/benchmark/line2.jpg",
+      "sha256": "d888682e51c28bc0d31b066b5508ac1cb3cd466822d55eda18950bdc6869e1f8"
+    },
+    {
+      "id": "line3",
+      "text": "上海市",
+      "characters": 3,
+      "text_bbox": [
+        48,
+        329,
+        168,
+        366
+      ],
+      "path": "main/test_images/benchmark/line3.jpg",
+      "sha256": "c09e09dd6039091dbd32b3920a6e054272ae0c3c73fd1eef37b2adc044e312a9"
+    }
+  ]
+}

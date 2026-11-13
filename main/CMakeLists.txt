@@ -3,16 +3,25 @@ idf_component_register(
         main.cpp
         app_storage.cpp
         app_ui.cpp
+        demo_controller.cpp
         demo_images.cpp
         ocr_pipeline.cpp
+        ocr_benchmark.cpp
     INCLUDE_DIRS .
     REQUIRES pp_ocr_v6 esp-dl esp32_p4_wifi6_touch_lcd_35
              espressif__esp_mmap_assets nvs_flash spi_flash
+    PRIV_REQUIRES esp_app_format
     EMBED_FILES
         test_images/pp_ocr_v6.jpg
         test_images/ocr_example_1.jpg
         test_images/ocr_example_2.jpg
 )
+
+if(CONFIG_APP_OCR_BENCHMARK)
+    target_add_binary_data(${COMPONENT_LIB} "test_images/benchmark/line15.jpg" BINARY)
+    target_add_binary_data(${COMPONENT_LIB} "test_images/benchmark/line2.jpg" BINARY)
+    target_add_binary_data(${COMPONENT_LIB} "test_images/benchmark/line3.jpg" BINARY)
+endif()
 
 # Package fonts in the dedicated 7 MB "storage" partition. The local packer
 # emits the esp_mmap_assets binary format without requiring Pillow/QOI.

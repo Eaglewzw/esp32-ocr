@@ -1,0 +1,209 @@
+diff --git a/components/pp_ocr_v6/CMakeLists.txt b/components/pp_ocr_v6/CMakeLists.txt
+index 5207aff..a2da90c 100644
+--- a/components/pp_ocr_v6/CMakeLists.txt
++++ b/components/pp_ocr_v6/CMakeLists.txt
+@@ -13,7 +13,7 @@ set(requires        esp-dl)
+ 
+ set(packed_model ${BUILD_DIR}/espdl_models/pp_ocr_v6.espdl)
+ 
+-idf_component_register(SRC_DIRS ${src_dirs} INCLUDE_DIRS ${include_dirs} REQUIRES ${requires})
++idf_component_register(SRC_DIRS ${src_dirs} INCLUDE_DIRS ${include_dirs} REQUIRES ${requires} PRIV_REQUIRES esp_timer)
+ 
+ if (NOT CONFIG_PP_OCR_V6_MODEL_IN_SDCARD)
+     if (IDF_TARGET STREQUAL "esp32p4" OR IDF_TARGET STREQUAL "esp32s31")
+diff --git a/components/pp_ocr_v6/pp_ocr_v6.cpp b/components/pp_ocr_v6/pp_ocr_v6.cpp
+index 6109537..fed7d9f 100644
+--- a/components/pp_ocr_v6/pp_ocr_v6.cpp
++++ b/components/pp_ocr_v6/pp_ocr_v6.cpp
+@@ -1,6 +1,7 @@
+ #include "pp_ocr_v6.hpp"
+ #include "esp_heap_caps.h"
+ #include "esp_log.h"
++#include "esp_timer.h"
+ #include "pp_ocr_v6_det_postprocessor.hpp"
+ #include "pp_ocr_v6_image_preprocessor.hpp"
+ #include "pp_ocr_v6_rec_postprocessor.hpp"
+@@ -24,15 +25,22 @@ static const char *model_path = "pp_ocr_v6";
+ static const char *TAG = "pp_ocr_v6";
+ 
+ namespace pp_ocr_v6 {
+-Det::Det(const char *model_name) :
++Det::Det(const char *model_name, int input_size) :
+     m_model(nullptr), m_image_preprocessor(nullptr), m_postprocessor(nullptr), m_letterbox_img({}), m_resize_scale(1.0f)
+ {
++    std::map<std::string, std::vector<int>> shapes;
++    if (input_size != 0) {
++        assert(input_size > 0 && input_size % 32 == 0);
++        shapes.emplace("x", std::vector<int>{1, input_size, input_size, 3});
++    }
+ #if CONFIG_PP_OCR_V6_MODEL_IN_SDCARD
+     auto sd_path = std::filesystem::path(CONFIG_BSP_SD_MOUNT_POINT) / CONFIG_PP_OCR_V6_MODEL_SDCARD_DIR / model_name;
+-    m_model = new dl::Model(sd_path.c_str(), fbs::MODEL_LOCATION_IN_SDCARD);
++    m_model = new dl::Model(sd_path.c_str(), fbs::MODEL_LOCATION_IN_SDCARD,
++                            0, dl::MEMORY_MANAGER_GREEDY, nullptr, true, shapes);
+ #else
+     m_model =
+-        new dl::Model(model_path, model_name, static_cast<fbs::model_location_type_t>(CONFIG_PP_OCR_V6_MODEL_LOCATION));
++        new dl::Model(model_path, model_name, static_cast<fbs::model_location_type_t>(CONFIG_PP_OCR_V6_MODEL_LOCATION),
++                       0, dl::MEMORY_MANAGER_GREEDY, nullptr, true, shapes);
+ #endif
+     m_model->minimize();
+     m_image_preprocessor =
+@@ -62,8 +70,28 @@ Det::~Det()
+     delete m_model;
+ }
+ 
+-std::vector<TextBox> Det::run(const dl::image::img_t &img)
++std::vector<int> Det::input_shape() const
+ {
++    const auto inputs = m_model->get_inputs();
++    return inputs.empty() ? std::vector<int>{} : inputs.begin()->second->shape;
++}
++
++std::vector<int> Det::output_shape() const
++{
++    const auto outputs = m_model->get_outputs();
++    return outputs.empty() ? std::vector<int>{} : outputs.begin()->second->shape;
++}
++
++std::vector<TextBox> Det::run(const dl::image::img_t &img, DetTiming *timing)
++{
++    if (timing) {
++        *timing = {};
++    }
++    if (!img.data || !img.width || !img.height || !ready()) {
++        ESP_LOGE(TAG, "Invalid detection image or unavailable letterbox buffer");
++        return {};
++    }
++    const int64_t start_us = timing ? esp_timer_get_time() : 0;
+     DL_LOG_INFER_LATENCY_INIT();
+     DL_LOG_INFER_LATENCY_START();
+     int model_w = m_letterbox_img.width;
+@@ -77,14 +105,22 @@ std::vector<TextBox> Det::run(const dl::image::img_t &img)
+     resize_h = std::min(resize_h, model_h);
+     bilinear_letterbox_top_left(img, m_letterbox_img, resize_w, resize_h);
+     m_image_preprocessor->preprocess(m_letterbox_img);
++    const int64_t pre_end_us = timing ? esp_timer_get_time() : 0;
+     DL_LOG_INFER_LATENCY_END_PRINT("det", "pre");
+ 
+     DL_LOG_INFER_LATENCY_START();
+     m_model->run();
++    const int64_t model_end_us = timing ? esp_timer_get_time() : 0;
+     DL_LOG_INFER_LATENCY_END_PRINT("det", "model");
+ 
+     DL_LOG_INFER_LATENCY_START();
+     auto boxes = m_postprocessor->postprocess(img, m_resize_scale, model_w, model_h);
++    if (timing) {
++        const int64_t end_us = esp_timer_get_time();
++        timing->preprocess_us = pre_end_us - start_us;
++        timing->model_us = model_end_us - pre_end_us;
++        timing->postprocess_us = end_us - model_end_us;
++    }
+     DL_LOG_INFER_LATENCY_END_PRINT("det", "post");
+ 
+     return boxes;
+diff --git a/components/pp_ocr_v6/pp_ocr_v6.hpp b/components/pp_ocr_v6/pp_ocr_v6.hpp
+index 01aeb24..1766be0 100644
+--- a/components/pp_ocr_v6/pp_ocr_v6.hpp
++++ b/components/pp_ocr_v6/pp_ocr_v6.hpp
+@@ -33,9 +33,16 @@ struct OCRResult {
+     float score;
+ };
+ 
++struct DetTiming {
++    int64_t preprocess_us = 0;
++    int64_t model_us = 0;
++    int64_t postprocess_us = 0;
++};
++
+ class Det {
+ public:
+-    explicit Det(const char *model_name = "pp_ocr_v6_det_s8.espdl");
++    // Zero preserves the input shape stored in the model. Overrides use NHWC.
++    explicit Det(const char *model_name = "pp_ocr_v6_det_s8.espdl", int input_size = 0);
+     ~Det();
+ 
+     Det(const Det &) = delete;
+@@ -43,7 +50,10 @@ public:
+     Det(Det &&) = delete;
+     Det &operator=(Det &&) = delete;
+ 
+-    std::vector<TextBox> run(const dl::image::img_t &img);
++    std::vector<TextBox> run(const dl::image::img_t &img, DetTiming *timing = nullptr);
++    std::vector<int> input_shape() const;
++    std::vector<int> output_shape() const;
++    bool ready() const { return m_letterbox_img.data != nullptr; }
+ 
+ private:
+     dl::Model *m_model;
+diff --git a/main/CMakeLists.txt b/main/CMakeLists.txt
+index 8dd06d7..f0db23c 100644
+--- a/main/CMakeLists.txt
++++ b/main/CMakeLists.txt
+@@ -5,15 +5,23 @@ idf_component_register(
+         app_ui.cpp
+         demo_images.cpp
+         ocr_pipeline.cpp
++        ocr_benchmark.cpp
+     INCLUDE_DIRS .
+     REQUIRES pp_ocr_v6 esp-dl esp32_p4_wifi6_touch_lcd_35
+              espressif__esp_mmap_assets nvs_flash spi_flash
++    PRIV_REQUIRES esp_app_format
+     EMBED_FILES
+         test_images/pp_ocr_v6.jpg
+         test_images/ocr_example_1.jpg
+         test_images/ocr_example_2.jpg
+ )
+ 
++if(CONFIG_APP_OCR_BENCHMARK)
++    target_add_binary_data(${COMPONENT_LIB} "test_images/benchmark/line15.jpg" BINARY)
++    target_add_binary_data(${COMPONENT_LIB} "test_images/benchmark/line2.jpg" BINARY)
++    target_add_binary_data(${COMPONENT_LIB} "test_images/benchmark/line3.jpg" BINARY)
++endif()
++
+ # Package fonts in the dedicated 7 MB "storage" partition. The local packer
+ # emits the esp_mmap_assets binary format without requiring Pillow/QOI.
+ set(FONT_ASSET_DIR "${CMAKE_CURRENT_LIST_DIR}/font_assets")
+diff --git a/main/main.cpp b/main/main.cpp
+index 99291de..2aad60b 100644
+--- a/main/main.cpp
++++ b/main/main.cpp
+@@ -2,6 +2,7 @@
+ #include "app_ui.hpp"
+ #include "demo_images.hpp"
+ #include "ocr_pipeline.hpp"
++#include "ocr_benchmark.hpp"
+ 
+ #include "esp_log.h"
+ #include "freertos/FreeRTOS.h"
+@@ -98,6 +99,13 @@ extern "C" void app_main(void)
+         return;
+     }
+ 
++#if CONFIG_APP_OCR_BENCHMARK
++    if (!app::start_ocr_benchmark(ui_context)) {
++        app::show_error(ui_context, "Benchmark task failed");
++    }
++    return;
++#endif
++
+     demo_controller.images = app::get_demo_images(demo_controller.image_count);
+     demo_controller.request_queue = xQueueCreate(1, sizeof(const app::DemoImage *));
+     if (!demo_controller.request_queue) {
+diff --git a/sdkconfig b/sdkconfig
+index 8922e9f..28c3cb8 100644
+--- a/sdkconfig
++++ b/sdkconfig
+@@ -1383,6 +1383,12 @@ CONFIG_PARTITION_TABLE_OFFSET=0x8000
+ CONFIG_PARTITION_TABLE_MD5=y
+ # end of Partition Table
+ 
++#
++# OCR application
++#
++CONFIG_APP_OCR_BENCHMARK=y
++# end of OCR application
++
+ #
+ # Compiler options
+ #

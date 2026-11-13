@@ -13,7 +13,7 @@ set(requires        esp-dl)
 
 set(packed_model ${BUILD_DIR}/espdl_models/pp_ocr_v6.espdl)
 
-idf_component_register(SRC_DIRS ${src_dirs} INCLUDE_DIRS ${include_dirs} REQUIRES ${requires})
+idf_component_register(SRC_DIRS ${src_dirs} INCLUDE_DIRS ${include_dirs} REQUIRES ${requires} PRIV_REQUIRES esp_timer)
 
 if (NOT CONFIG_PP_OCR_V6_MODEL_IN_SDCARD)
     if (IDF_TARGET STREQUAL "esp32p4" OR IDF_TARGET STREQUAL "esp32s31")

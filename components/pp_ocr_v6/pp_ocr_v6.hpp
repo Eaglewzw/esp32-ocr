@@ -33,9 +33,16 @@ struct OCRResult {
     float score;
 };
 
+struct DetTiming {
+    int64_t preprocess_us = 0;
+    int64_t model_us = 0;
+    int64_t postprocess_us = 0;
+};
+
 class Det {
 public:
-    explicit Det(const char *model_name = "pp_ocr_v6_det_s8.espdl");
+    // Zero preserves the input shape stored in the model. Overrides use NHWC.
+    explicit Det(const char *model_name = "pp_ocr_v6_det_s8.espdl", int input_size = 0);
     ~Det();
 
     Det(const Det &) = delete;
@@ -43,7 +50,10 @@ public:
     Det(Det &&) = delete;
     Det &operator=(Det &&) = delete;
 
-    std::vector<TextBox> run(const dl::image::img_t &img);
+    std::vector<TextBox> run(const dl::image::img_t &img, DetTiming *timing = nullptr);
+    std::vector<int> input_shape() const;
+    std::vector<int> output_shape() const;
+    bool ready() const { return m_letterbox_img.data != nullptr; }
 
 private:
     dl::Model *m_model;
@@ -77,7 +87,8 @@ public:
     static constexpr float default_rec_score_threshold = 0.5; // drop_score
 
     explicit PPOCRV6(RecMode rec_mode = static_cast<RecMode>(CONFIG_PP_OCR_V6_REC_MODE),
-                     RecModel rec_type = static_cast<RecModel>(CONFIG_DEFAULT_PP_OCR_V6_REC_MODEL));
+                     RecModel rec_type = static_cast<RecModel>(CONFIG_DEFAULT_PP_OCR_V6_REC_MODEL),
+                     int det_input_size = 0);
     ~PPOCRV6();
 
     PPOCRV6(const PPOCRV6 &) = delete;

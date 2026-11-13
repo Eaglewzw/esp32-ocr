@@ -74,7 +74,10 @@ void run_ocr_pipeline(UiContext &ui, const DemoImage &selected_image)
     // Model::run() defaults to single-core mode, keeping inference on the OCR task's core.
     ESP_LOGI(TAG, "Running OCR on core %d...", xPortGetCoreID());
     // Keep the models loaded between demo runs so subsequent selections start faster.
-    static pp_ocr_v6::PPOCRV6 ocr;
+    static pp_ocr_v6::PPOCRV6 ocr(
+        static_cast<pp_ocr_v6::RecMode>(CONFIG_PP_OCR_V6_REC_MODE),
+        static_cast<pp_ocr_v6::RecModel>(CONFIG_DEFAULT_PP_OCR_V6_REC_MODEL),
+        320);
     auto results = ocr.run(image);
     auto result_lines = format_results(results);
 

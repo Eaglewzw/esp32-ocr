@@ -1,0 +1,7 @@
+# Keep generated PDFs as binary assets.
+*.pdf binary
+
+# Preserve captured experiment records byte-for-byte, including console spacing.
+experiments/**/*.log -text -whitespace
+experiments/**/*.patch -text -whitespace
+experiments/**/*.csv -text whitespace=cr-at-eol

@@ -39,6 +39,8 @@
 
 | 模块 | 文件 | 职责 |
 |:---|:---|:---|
+| **main** | `main.cpp` | 核心启动流程：初始化存储 → 初始化界面 → 启动演示或实验 |
+| **demo_controller** | `demo_controller.cpp/.hpp` | OCR 任务和请求队列、图片选择、忙碌状态和返回导航 |
 | **app_storage** | `app_storage.cpp/.hpp` | NVS 初始化、字体分区 mmap 挂载、资源读取 |
 | **app_ui** | `app_ui.cpp/.hpp` | LVGL 界面：图片选择器、OCR 预览、结果卡片 |
 | **ocr_pipeline** | `ocr_pipeline.cpp/.hpp` | JPEG 解码 → PP-OCRv6 推理 → 结果格式化 |
@@ -50,6 +52,25 @@
 - **模型常驻**：`PPOCRV6` 实例在首次推理后保持加载，后续图片识别无需重新初始化
 - **PPA 加速**：启用 ESP32-P4 的 PPA (Pixel Processing Accelerator) 硬件加速 LVGL 渲染
 - **字体 Flash 映射**：约 3.9 MB 完整 CJK 字体通过 `esp_mmap_assets` 直接从 Flash 映射为只读内存，不占用 PSRAM；详见 [`docs/font_flash_mmap.md`](docs/font_flash_mmap.md)
+
+## 检测性能实验
+
+当前演示固件已恢复图片选择界面，Detect 输入为 **320×320**，Rec 继续使用原有配置。
+尺寸在 `main/ocr_pipeline.cpp` 创建 `PPOCRV6` 时指定；将第三个参数改为 `0` 可恢复模型默认的736×736。
+
+已完成同一模型在736×736和320×320下的板上对照，以及15字、2字、3字单行样本测试。
+详见[实验结果与原始数据](experiments/ocr_detect_2026-11-13/README.md)和[测试模式使用说明](docs/ocr_benchmark.md)。
+
+## 文件整理
+
+- `main/`：演示程序、当前使用的图片、实验样本和字体。
+- `components/`、`managed_components/`：本地组件与已下载的依赖；保留各自许可证。
+- `experiments/`：实测原始日志、统计数据、图表和配置快照。
+- `output/pdf/`：保留最终确认的[4页图表报告](output/pdf/ESP32-P4_OCR检测实验_精简图表版.pdf)。
+- `tools/render_ocr_benchmark_pdf.py`：重新生成上述报告，需要 ReportLab、Pillow 和系统文泉驿正黑字体。
+
+`build/` 是可重新生成的编译产物，`tmp/` 是临时文件，不参与版本管理。
+清理后运行 `idf.py build` 会重新生成构建目录；已经烧录到设备的固件不受影响。
 
 ## 许可
 

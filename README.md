@@ -40,6 +40,8 @@ The current configuration uses **SHORT mode**, with a total model size of approx
 
 | Module | Files | Responsibility |
 |:---|:---|:---|
+| **main** | `main.cpp` | Startup flow: initialize storage and UI, then start the demo or benchmark |
+| **demo_controller** | `demo_controller.cpp/.hpp` | OCR worker and request queue, image selection, busy state, and return navigation |
 | **app_storage** | `app_storage.cpp/.hpp` | NVS initialization, font partition memory mapping, and asset loading |
 | **app_ui** | `app_ui.cpp/.hpp` | LVGL UI: image selector, OCR preview, and result cards |
 | **ocr_pipeline** | `ocr_pipeline.cpp/.hpp` | JPEG decoding → PP-OCRv6 inference → result formatting |

@@ -1,5 +1,9 @@
 # ESP-IDF build output
 build/
+tmp/
+__pycache__/
+*.py[cod]
+sdkconfig.old
 
 # Component manager
 managed_components/

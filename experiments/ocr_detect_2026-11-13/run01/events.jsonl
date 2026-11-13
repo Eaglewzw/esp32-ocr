@@ -1,0 +1,360 @@
+{"type": "start", "protocol": 1, "cpu_mhz": 360, "psram_mhz": 200, "core": 1, "priority": 5, "warmups_per_batch": 3, "runs_per_batch": 10, "chip_revision": 103, "idf": "v5.5.4", "elf_sha256": "5760eff6231e20f62b4ac943819156523cb9a6dabe3e4b0c05b9e1e1978efdcf", "optimization": "debug"}
+{"type": "image", "sample": "label", "width": 750, "height": 1170, "decode_us": 242827}
+{"type": "model", "sample": "label", "size": 736, "batch": 1, "init_us": 352488, "input": [1, 736, 736, 3], "output": [1, 736, 736, 1], "valid": true, "free_internal": 133535, "free_psram": 9666148}
+{"type": "run", "sample": "label", "size": 736, "batch": 1, "warmup": true, "run": 1, "pre_us": 371800, "model_us": 2892533, "post_us": 86768, "total_us": 3351106, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 1, "warmup": true, "run": 2, "pre_us": 371776, "model_us": 2892387, "post_us": 86772, "total_us": 3350940, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 1, "warmup": true, "run": 3, "pre_us": 371749, "model_us": 2892317, "post_us": 86761, "total_us": 3350832, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 1, "warmup": false, "run": 1, "pre_us": 371751, "model_us": 2892325, "post_us": 86769, "total_us": 3350850, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 1, "warmup": false, "run": 2, "pre_us": 371766, "model_us": 2892279, "post_us": 86765, "total_us": 3350815, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 1, "warmup": false, "run": 3, "pre_us": 371752, "model_us": 2892243, "post_us": 86761, "total_us": 3350761, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 1, "warmup": false, "run": 4, "pre_us": 371824, "model_us": 2892443, "post_us": 86773, "total_us": 3351045, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 1, "warmup": false, "run": 5, "pre_us": 371752, "model_us": 2892604, "post_us": 86776, "total_us": 3351137, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 1, "warmup": false, "run": 6, "pre_us": 371838, "model_us": 2892537, "post_us": 86770, "total_us": 3351150, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 1, "warmup": false, "run": 7, "pre_us": 371735, "model_us": 2892376, "post_us": 86765, "total_us": 3350881, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 1, "warmup": false, "run": 8, "pre_us": 371751, "model_us": 2892391, "post_us": 86771, "total_us": 3350918, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 1, "warmup": false, "run": 9, "pre_us": 371761, "model_us": 2892298, "post_us": 86763, "total_us": 3350827, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 1, "warmup": false, "run": 10, "pre_us": 371749, "model_us": 2892430, "post_us": 86767, "total_us": 3350951, "boxes": 27, "core": 1}
+{"type": "box", "sample": "label", "size": 736, "index": 0, "score": 0.870239, "points": [527, 32, 721, 32, 721, 58, 527, 58]}
+{"type": "box", "sample": "label", "size": 736, "index": 1, "score": 0.732736, "points": [61, 51, 144, 51, 144, 85, 61, 85]}
+{"type": "box", "sample": "label", "size": 736, "index": 2, "score": 0.822829, "points": [616, 69, 711, 69, 711, 94, 616, 94]}
+{"type": "box", "sample": "label", "size": 736, "index": 3, "score": 0.90077, "points": [26, 135, 257, 135, 257, 153, 26, 153]}
+{"type": "box", "sample": "label", "size": 736, "index": 4, "score": 0.875223, "points": [600, 135, 722, 135, 722, 153, 600, 153]}
+{"type": "box", "sample": "label", "size": 736, "index": 5, "score": 0.799675, "points": [275, 290, 474, 293, 474, 317, 274, 314]}
+{"type": "box", "sample": "label", "size": 736, "index": 6, "score": 0.924724, "points": [27, 347, 391, 347, 391, 391, 27, 391]}
+{"type": "box", "sample": "label", "size": 736, "index": 7, "score": 0.620898, "points": [35, 423, 61, 423, 61, 445, 35, 445]}
+{"type": "box", "sample": "label", "size": 736, "index": 8, "score": 0.927469, "points": [76, 421, 221, 421, 221, 450, 76, 450]}
+{"type": "box", "sample": "label", "size": 736, "index": 9, "score": 0.931062, "points": [462, 420, 594, 420, 594, 452, 462, 452]}
+{"type": "box", "sample": "label", "size": 736, "index": 10, "score": 0.83804, "points": [95, 497, 341, 497, 341, 527, 95, 527]}
+{"type": "box", "sample": "label", "size": 736, "index": 11, "score": 0.952604, "points": [510, 501, 577, 501, 577, 518, 510, 518]}
+{"type": "box", "sample": "label", "size": 736, "index": 12, "score": 0.891386, "points": [512, 525, 628, 525, 628, 547, 512, 547]}
+{"type": "box", "sample": "label", "size": 736, "index": 13, "score": 0.851747, "points": [98, 536, 469, 536, 469, 569, 98, 569]}
+{"type": "box", "sample": "label", "size": 736, "index": 14, "score": 0.839266, "points": [512, 555, 712, 555, 712, 581, 512, 581]}
+{"type": "box", "sample": "label", "size": 736, "index": 15, "score": 0.897615, "points": [98, 571, 238, 571, 238, 604, 98, 604]}
+{"type": "box", "sample": "label", "size": 736, "index": 16, "score": 0.877388, "points": [89, 647, 504, 647, 504, 669, 89, 669]}
+{"type": "box", "sample": "label", "size": 736, "index": 17, "score": 0.944444, "points": [610, 646, 724, 646, 724, 671, 610, 671]}
+{"type": "box", "sample": "label", "size": 736, "index": 18, "score": 0.856663, "points": [23, 747, 106, 747, 106, 790, 23, 790]}
+{"type": "box", "sample": "label", "size": 736, "index": 19, "score": 0.807833, "points": [316, 793, 490, 793, 490, 815, 316, 815]}
+{"type": "box", "sample": "label", "size": 736, "index": 20, "score": 0.840408, "points": [26, 832, 223, 834, 222, 856, 25, 853]}
+{"type": "box", "sample": "label", "size": 736, "index": 21, "score": 0.948896, "points": [25, 862, 224, 862, 224, 884, 25, 884]}
+{"type": "box", "sample": "label", "size": 736, "index": 22, "score": 0.798832, "points": [632, 898, 724, 898, 724, 935, 632, 935]}
+{"type": "box", "sample": "label", "size": 736, "index": 23, "score": 0.86613, "points": [103, 971, 356, 971, 356, 1005, 103, 1005]}
+{"type": "box", "sample": "label", "size": 736, "index": 24, "score": 0.965359, "points": [104, 1018, 404, 1018, 404, 1048, 104, 1048]}
+{"type": "box", "sample": "label", "size": 736, "index": 25, "score": 0.806998, "points": [103, 1057, 373, 1057, 373, 1075, 103, 1075]}
+{"type": "box", "sample": "label", "size": 736, "index": 26, "score": 0.941025, "points": [199, 1112, 550, 1112, 550, 1127, 199, 1127]}
+{"type": "model", "sample": "label", "size": 320, "batch": 1, "init_us": 291392, "input": [1, 320, 320, 3], "output": [1, 320, 320, 1], "valid": true, "free_internal": 133275, "free_psram": 21507220}
+{"type": "run", "sample": "label", "size": 320, "batch": 1, "warmup": true, "run": 1, "pre_us": 73845, "model_us": 496131, "post_us": 27036, "total_us": 597017, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 1, "warmup": true, "run": 2, "pre_us": 73873, "model_us": 496085, "post_us": 27025, "total_us": 596988, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 1, "warmup": true, "run": 3, "pre_us": 73837, "model_us": 496120, "post_us": 27023, "total_us": 596986, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 1, "warmup": false, "run": 1, "pre_us": 73863, "model_us": 496059, "post_us": 27018, "total_us": 596945, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 1, "warmup": false, "run": 2, "pre_us": 73840, "model_us": 496117, "post_us": 27023, "total_us": 596985, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 1, "warmup": false, "run": 3, "pre_us": 73874, "model_us": 496076, "post_us": 27032, "total_us": 596987, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 1, "warmup": false, "run": 4, "pre_us": 73862, "model_us": 495989, "post_us": 27034, "total_us": 596890, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 1, "warmup": false, "run": 5, "pre_us": 73861, "model_us": 496102, "post_us": 27019, "total_us": 596987, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 1, "warmup": false, "run": 6, "pre_us": 73859, "model_us": 496101, "post_us": 27011, "total_us": 596976, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 1, "warmup": false, "run": 7, "pre_us": 73860, "model_us": 496111, "post_us": 27025, "total_us": 597001, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 1, "warmup": false, "run": 8, "pre_us": 73849, "model_us": 496044, "post_us": 27030, "total_us": 596928, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 1, "warmup": false, "run": 9, "pre_us": 73830, "model_us": 496111, "post_us": 27031, "total_us": 596977, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 1, "warmup": false, "run": 10, "pre_us": 73852, "model_us": 496120, "post_us": 27028, "total_us": 597005, "boxes": 24, "core": 1}
+{"type": "box", "sample": "label", "size": 320, "index": 0, "score": 0.906901, "points": [528, 27, 722, 27, 722, 61, 528, 61]}
+{"type": "box", "sample": "label", "size": 320, "index": 1, "score": 0.841488, "points": [57, 54, 144, 54, 144, 85, 57, 85]}
+{"type": "box", "sample": "label", "size": 320, "index": 2, "score": 0.700125, "points": [607, 62, 720, 62, 720, 102, 607, 102]}
+{"type": "box", "sample": "label", "size": 320, "index": 3, "score": 0.449887, "points": [37, 128, 186, 128, 186, 153, 37, 153]}
+{"type": "box", "sample": "label", "size": 320, "index": 4, "score": 0.424592, "points": [605, 131, 706, 122, 708, 154, 607, 163]}
+{"type": "box", "sample": "label", "size": 320, "index": 5, "score": 0.805086, "points": [276, 287, 474, 287, 474, 320, 276, 320]}
+{"type": "box", "sample": "label", "size": 320, "index": 6, "score": 0.921479, "points": [26, 344, 391, 344, 391, 395, 26, 395]}
+{"type": "box", "sample": "label", "size": 320, "index": 7, "score": 0.951257, "points": [34, 418, 221, 418, 221, 452, 34, 452]}
+{"type": "box", "sample": "label", "size": 320, "index": 8, "score": 0.790222, "points": [457, 413, 592, 413, 592, 453, 457, 453]}
+{"type": "box", "sample": "label", "size": 320, "index": 9, "score": 0.679688, "points": [36, 497, 81, 497, 81, 531, 36, 531]}
+{"type": "box", "sample": "label", "size": 320, "index": 10, "score": 0.728918, "points": [74, 491, 342, 491, 342, 525, 74, 525]}
+{"type": "box", "sample": "label", "size": 320, "index": 11, "score": 0.678879, "points": [505, 490, 579, 496, 577, 524, 503, 518]}
+{"type": "box", "sample": "label", "size": 320, "index": 12, "score": 0.785625, "points": [512, 523, 617, 523, 617, 548, 512, 548]}
+{"type": "box", "sample": "label", "size": 320, "index": 13, "score": 0.921875, "points": [93, 535, 467, 535, 467, 569, 93, 569]}
+{"type": "box", "sample": "label", "size": 320, "index": 14, "score": 0.844707, "points": [510, 550, 708, 550, 708, 583, 510, 583]}
+{"type": "box", "sample": "label", "size": 320, "index": 15, "score": 0.892463, "points": [93, 569, 236, 569, 236, 601, 93, 601]}
+{"type": "box", "sample": "label", "size": 320, "index": 16, "score": 0.655945, "points": [32, 639, 506, 639, 506, 681, 32, 681]}
+{"type": "box", "sample": "label", "size": 320, "index": 17, "score": 0.932542, "points": [609, 642, 722, 642, 722, 674, 609, 674]}
+{"type": "box", "sample": "label", "size": 320, "index": 18, "score": 0.842494, "points": [24, 744, 108, 744, 108, 795, 24, 795]}
+{"type": "box", "sample": "label", "size": 320, "index": 19, "score": 0.895729, "points": [26, 859, 223, 859, 223, 885, 26, 885]}
+{"type": "box", "sample": "label", "size": 320, "index": 20, "score": 0.880285, "points": [89, 970, 357, 970, 357, 1004, 89, 1004]}
+{"type": "box", "sample": "label", "size": 320, "index": 21, "score": 0.757752, "points": [98, 1008, 403, 1008, 403, 1050, 98, 1050]}
+{"type": "box", "sample": "label", "size": 320, "index": 22, "score": 0.959654, "points": [99, 1053, 373, 1053, 373, 1079, 99, 1079]}
+{"type": "box", "sample": "label", "size": 320, "index": 23, "score": 0.721051, "points": [194, 1104, 523, 1104, 523, 1130, 194, 1130]}
+{"type": "model", "sample": "label", "size": 320, "batch": 2, "init_us": 291729, "input": [1, 320, 320, 3], "output": [1, 320, 320, 1], "valid": true, "free_internal": 133183, "free_psram": 21507192}
+{"type": "run", "sample": "label", "size": 320, "batch": 2, "warmup": true, "run": 1, "pre_us": 73840, "model_us": 496260, "post_us": 27086, "total_us": 597191, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 2, "warmup": true, "run": 2, "pre_us": 73875, "model_us": 496194, "post_us": 27101, "total_us": 597175, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 2, "warmup": true, "run": 3, "pre_us": 73847, "model_us": 496159, "post_us": 27102, "total_us": 597113, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 2, "warmup": false, "run": 11, "pre_us": 73852, "model_us": 496194, "post_us": 27090, "total_us": 597141, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 2, "warmup": false, "run": 12, "pre_us": 73834, "model_us": 496184, "post_us": 27102, "total_us": 597125, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 2, "warmup": false, "run": 13, "pre_us": 73837, "model_us": 496164, "post_us": 27108, "total_us": 597114, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 2, "warmup": false, "run": 14, "pre_us": 73838, "model_us": 496167, "post_us": 27107, "total_us": 597117, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 2, "warmup": false, "run": 15, "pre_us": 73836, "model_us": 496148, "post_us": 27111, "total_us": 597101, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 2, "warmup": false, "run": 16, "pre_us": 73833, "model_us": 496192, "post_us": 27105, "total_us": 597135, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 2, "warmup": false, "run": 17, "pre_us": 73837, "model_us": 496182, "post_us": 27102, "total_us": 597126, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 2, "warmup": false, "run": 18, "pre_us": 73835, "model_us": 496186, "post_us": 27109, "total_us": 597135, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 2, "warmup": false, "run": 19, "pre_us": 73836, "model_us": 496236, "post_us": 27100, "total_us": 597177, "boxes": 24, "core": 1}
+{"type": "run", "sample": "label", "size": 320, "batch": 2, "warmup": false, "run": 20, "pre_us": 73836, "model_us": 496249, "post_us": 27113, "total_us": 597203, "boxes": 24, "core": 1}
+{"type": "model", "sample": "label", "size": 736, "batch": 2, "init_us": 343114, "input": [1, 736, 736, 3], "output": [1, 736, 736, 1], "valid": true, "free_internal": 133179, "free_psram": 9666196}
+{"type": "run", "sample": "label", "size": 736, "batch": 2, "warmup": true, "run": 1, "pre_us": 371790, "model_us": 2893026, "post_us": 86798, "total_us": 3351619, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 2, "warmup": true, "run": 2, "pre_us": 371735, "model_us": 2892701, "post_us": 86803, "total_us": 3351244, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 2, "warmup": true, "run": 3, "pre_us": 371784, "model_us": 2892937, "post_us": 86801, "total_us": 3351527, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 2, "warmup": false, "run": 11, "pre_us": 371750, "model_us": 2892752, "post_us": 86782, "total_us": 3351289, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 2, "warmup": false, "run": 12, "pre_us": 371788, "model_us": 2892646, "post_us": 86819, "total_us": 3351258, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 2, "warmup": false, "run": 13, "pre_us": 371812, "model_us": 2892822, "post_us": 86795, "total_us": 3351434, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 2, "warmup": false, "run": 14, "pre_us": 371746, "model_us": 2892570, "post_us": 86793, "total_us": 3351114, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 2, "warmup": false, "run": 15, "pre_us": 371758, "model_us": 2892987, "post_us": 86796, "total_us": 3351546, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 2, "warmup": false, "run": 16, "pre_us": 371751, "model_us": 2892736, "post_us": 86789, "total_us": 3351281, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 2, "warmup": false, "run": 17, "pre_us": 371755, "model_us": 2892950, "post_us": 86802, "total_us": 3351512, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 2, "warmup": false, "run": 18, "pre_us": 371758, "model_us": 2892780, "post_us": 86792, "total_us": 3351335, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 2, "warmup": false, "run": 19, "pre_us": 371727, "model_us": 2892825, "post_us": 86795, "total_us": 3351352, "boxes": 27, "core": 1}
+{"type": "run", "sample": "label", "size": 736, "batch": 2, "warmup": false, "run": 20, "pre_us": 371742, "model_us": 2892830, "post_us": 86790, "total_us": 3351367, "boxes": 27, "core": 1}
+{"type": "model", "sample": "label", "size": 736, "batch": 0, "init_us": 0, "input": [1, 736, 736, 3], "output": [1, 736, 736, 1], "valid": true, "free_internal": 133179, "free_psram": 9666196}
+{"type": "ocr", "sample": "label", "size": 736, "index": 0, "score": 0.983353, "accepted": true, "text": "代收货款：¥319.7", "points": [527, 32, 721, 32, 721, 58, 527, 58]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 1, "score": 0.85763, "accepted": true, "text": "LOGO", "points": [61, 51, 144, 51, 144, 85, 61, 85]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 2, "score": 0.999191, "accepted": true, "text": "标准时效", "points": [616, 69, 711, 69, 711, 94, 616, 94]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 3, "score": 0.96886, "accepted": true, "text": "2026/07/2719:17:00第1次打印", "points": [26, 135, 257, 135, 257, 153, 26, 153]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 4, "score": 0.918757, "accepted": true, "text": "客付邮费：¥11.1", "points": [600, 135, 722, 135, 722, 153, 600, 153]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 5, "score": 0.985214, "accepted": true, "text": "TEST114832269481", "points": [275, 290, 474, 293, 474, 317, 274, 314]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 6, "score": 0.991202, "accepted": true, "text": "522 X32-6 901", "points": [27, 347, 391, 347, 391, 391, 27, 391]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 7, "score": 0.999729, "accepted": true, "text": "集", "points": [35, 423, 61, 423, 61, 445, 35, 445]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 8, "score": 0.99649, "accepted": true, "text": "西南转运站", "points": [76, 421, 221, 421, 221, 450, 76, 450]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 9, "score": 0.999866, "accepted": true, "text": "示例分区B", "points": [462, 420, 594, 420, 594, 452, 462, 452]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 10, "score": 0.973589, "accepted": true, "text": "李四 100****0000", "points": [95, 497, 341, 497, 341, 527, 95, 527]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 11, "score": 1.0, "accepted": true, "text": "隐私保护", "points": [510, 501, 577, 501, 577, 518, 510, 518]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 12, "score": 0.989911, "accepted": true, "text": "可直接电话拨打", "points": [512, 525, 628, 525, 628, 547, 512, 547]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 13, "score": 0.993564, "accepted": true, "text": "上海市徐汇区田林路XX号智能", "points": [98, 536, 469, 536, 469, 569, 98, 569]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 14, "score": 0.999997, "accepted": true, "text": "1286480450转263", "points": [512, 555, 712, 555, 712, 581, 512, 581]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 15, "score": 0.999949, "accepted": true, "text": "硬件实验室", "points": [98, 571, 238, 571, 238, 604, 98, 604]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 16, "score": 0.80151, "accepted": true, "text": "乐鑫科技EspresifSystems 02-6227-4269", "points": [89, 647, 504, 647, 504, 669, 89, 669]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 17, "score": 0.999582, "accepted": true, "text": "西南转运站", "points": [610, 646, 724, 646, 724, 671, 610, 671]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 18, "score": 0.999512, "accepted": true, "text": "Y49", "points": [23, 747, 106, 747, 106, 790, 23, 790]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 19, "score": 0.985413, "accepted": true, "text": "DEM0407020728093", "points": [316, 793, 490, 793, 490, 815, 316, 815]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 20, "score": 0.932324, "accepted": true, "text": "ESP32-S3-Korvo-2 X1", "points": [26, 832, 223, 834, 222, 856, 25, 853]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 21, "score": 0.961533, "accepted": true, "text": "OV2640摄像头模组 x1", "points": [25, 862, 224, 862, 224, 884, 25, 884]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 22, "score": 0.999209, "accepted": true, "text": "已验视", "points": [632, 898, 724, 898, 724, 935, 632, 935]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 23, "score": 0.999993, "accepted": true, "text": "隐私保护服务生效中", "points": [103, 971, 356, 971, 356, 1005, 103, 1005]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 24, "score": 0.976321, "accepted": true, "text": "1650572325 转721", "points": [104, 1018, 404, 1018, 404, 1048, 104, 1048]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 25, "score": 0.999196, "accepted": true, "text": "快递员可用该安全号码联系收件人", "points": [103, 1057, 373, 1057, 373, 1075, 103, 1075]}
+{"type": "ocr", "sample": "label", "size": 736, "index": 26, "score": 0.917486, "accepted": true, "text": "SYNTHETIC·图中信息均为虚构·NOREAL I", "points": [199, 1112, 550, 1112, 550, 1127, 199, 1127]}
+{"type": "quality_done", "sample": "label", "size": 736, "boxes": 27}
+{"type": "model", "sample": "label", "size": 320, "batch": 0, "init_us": 0, "input": [1, 320, 320, 3], "output": [1, 320, 320, 1], "valid": true, "free_internal": 134359, "free_psram": 21507168}
+{"type": "ocr", "sample": "label", "size": 320, "index": 0, "score": 0.9735, "accepted": true, "text": "代收货款：¥319.7", "points": [528, 27, 722, 27, 722, 61, 528, 61]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 1, "score": 0.82411, "accepted": true, "text": "LOG0", "points": [57, 54, 144, 54, 144, 85, 57, 85]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 2, "score": 0.966581, "accepted": true, "text": "标准时效", "points": [607, 62, 720, 62, 720, 102, 607, 102]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 3, "score": 0.978637, "accepted": true, "text": "026/07/27 19:17:00", "points": [37, 128, 186, 128, 186, 153, 37, 153]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 4, "score": 0.95573, "accepted": true, "text": "寄付邮费:¥11", "points": [605, 131, 706, 122, 708, 154, 607, 163]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 5, "score": 0.997821, "accepted": true, "text": "TEST114832269481", "points": [276, 287, 474, 287, 474, 320, 276, 320]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 6, "score": 0.978996, "accepted": true, "text": "522 X32-6 901", "points": [26, 344, 391, 344, 391, 395, 26, 395]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 7, "score": 0.999202, "accepted": true, "text": "集西南转运站", "points": [34, 418, 221, 418, 221, 452, 34, 452]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 8, "score": 0.999347, "accepted": true, "text": "示例分区B", "points": [457, 413, 592, 413, 592, 453, 457, 453]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 9, "score": 0.999995, "accepted": true, "text": "收", "points": [36, 497, 81, 497, 81, 531, 36, 531]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 10, "score": 0.968151, "accepted": true, "text": "李四 100****0000", "points": [74, 491, 342, 491, 342, 525, 74, 525]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 11, "score": 0.999998, "accepted": true, "text": "隐私保护", "points": [505, 490, 579, 496, 577, 524, 503, 518]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 12, "score": 0.889301, "accepted": true, "text": "可直接电话拨扑", "points": [512, 523, 617, 523, 617, 548, 512, 548]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 13, "score": 0.993696, "accepted": true, "text": "上海市徐汇区田林路XX号智能", "points": [93, 535, 467, 535, 467, 569, 93, 569]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 14, "score": 0.999622, "accepted": true, "text": "1286480450转263", "points": [510, 550, 708, 550, 708, 583, 510, 583]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 15, "score": 0.999908, "accepted": true, "text": "硬件实验室", "points": [93, 569, 236, 569, 236, 601, 93, 601]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 16, "score": 0.43328, "accepted": false, "text": "寄乐鑫科Espres yte0162126", "points": [32, 639, 506, 639, 506, 681, 32, 681]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 17, "score": 0.99964, "accepted": true, "text": "西南转运站", "points": [609, 642, 722, 642, 722, 674, 609, 674]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 18, "score": 0.973008, "accepted": true, "text": "Y49", "points": [24, 744, 108, 744, 108, 795, 24, 795]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 19, "score": 0.926089, "accepted": true, "text": "OV2640摄像头模组 ×1", "points": [26, 859, 223, 859, 223, 885, 26, 885]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 20, "score": 0.947245, "accepted": true, "text": "隐私保护服务生效中", "points": [89, 970, 357, 970, 357, 1004, 89, 1004]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 21, "score": 0.984015, "accepted": true, "text": "1650572325 转721", "points": [98, 1008, 403, 1008, 403, 1050, 98, 1050]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 22, "score": 0.971648, "accepted": true, "text": "快递员可用该安全号码联系收件人", "points": [99, 1053, 373, 1053, 373, 1079, 99, 1079]}
+{"type": "ocr", "sample": "label", "size": 320, "index": 23, "score": 0.948587, "accepted": true, "text": "SYNTHETIC·图中信息均为虚构·NO REAL", "points": [194, 1104, 523, 1104, 523, 1130, 194, 1130]}
+{"type": "quality_done", "sample": "label", "size": 320, "boxes": 24}
+{"type": "image", "sample": "line15", "width": 736, "height": 736, "decode_us": 133663}
+{"type": "model", "sample": "line15", "size": 736, "batch": 1, "init_us": 354837, "input": [1, 736, 736, 3], "output": [1, 736, 736, 1], "valid": true, "free_internal": 134367, "free_psram": 10673568}
+{"type": "run", "sample": "line15", "size": 736, "batch": 1, "warmup": true, "run": 1, "pre_us": 526694, "model_us": 2892044, "post_us": 46607, "total_us": 3465351, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 1, "warmup": true, "run": 2, "pre_us": 526244, "model_us": 2891875, "post_us": 46612, "total_us": 3464736, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 1, "warmup": true, "run": 3, "pre_us": 526158, "model_us": 2891740, "post_us": 46594, "total_us": 3464497, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 1, "warmup": false, "run": 1, "pre_us": 526710, "model_us": 2891669, "post_us": 46588, "total_us": 3464972, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 1, "warmup": false, "run": 2, "pre_us": 526674, "model_us": 2891674, "post_us": 46587, "total_us": 3464940, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 1, "warmup": false, "run": 3, "pre_us": 526023, "model_us": 2891712, "post_us": 46596, "total_us": 3464336, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 1, "warmup": false, "run": 4, "pre_us": 526326, "model_us": 2891902, "post_us": 46585, "total_us": 3464818, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 1, "warmup": false, "run": 5, "pre_us": 526451, "model_us": 2891867, "post_us": 46596, "total_us": 3464919, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 1, "warmup": false, "run": 6, "pre_us": 526853, "model_us": 2891826, "post_us": 46593, "total_us": 3465277, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 1, "warmup": false, "run": 7, "pre_us": 527092, "model_us": 2891844, "post_us": 46599, "total_us": 3465540, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 1, "warmup": false, "run": 8, "pre_us": 526294, "model_us": 2891809, "post_us": 46587, "total_us": 3464695, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 1, "warmup": false, "run": 9, "pre_us": 526764, "model_us": 2891857, "post_us": 46597, "total_us": 3465223, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 1, "warmup": false, "run": 10, "pre_us": 526893, "model_us": 2891765, "post_us": 46597, "total_us": 3465261, "boxes": 1, "core": 1}
+{"type": "box", "sample": "line15", "size": 736, "index": 0, "score": 0.842259, "points": [55, 329, 641, 329, 641, 364, 55, 364]}
+{"type": "model", "sample": "line15", "size": 320, "batch": 1, "init_us": 292879, "input": [1, 320, 320, 3], "output": [1, 320, 320, 1], "valid": true, "free_internal": 133031, "free_psram": 22514604}
+{"type": "run", "sample": "line15", "size": 320, "batch": 1, "warmup": true, "run": 1, "pre_us": 109059, "model_us": 496491, "post_us": 9365, "total_us": 614920, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 1, "warmup": true, "run": 2, "pre_us": 109047, "model_us": 496313, "post_us": 9356, "total_us": 614721, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 1, "warmup": true, "run": 3, "pre_us": 109047, "model_us": 496288, "post_us": 9357, "total_us": 614697, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 1, "warmup": false, "run": 1, "pre_us": 109044, "model_us": 496320, "post_us": 9356, "total_us": 614725, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 1, "warmup": false, "run": 2, "pre_us": 109047, "model_us": 496308, "post_us": 9358, "total_us": 614718, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 1, "warmup": false, "run": 3, "pre_us": 109047, "model_us": 496297, "post_us": 9356, "total_us": 614705, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 1, "warmup": false, "run": 4, "pre_us": 109043, "model_us": 496325, "post_us": 9358, "total_us": 614731, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 1, "warmup": false, "run": 5, "pre_us": 109050, "model_us": 496322, "post_us": 9359, "total_us": 614736, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 1, "warmup": false, "run": 6, "pre_us": 109049, "model_us": 496358, "post_us": 9358, "total_us": 614770, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 1, "warmup": false, "run": 7, "pre_us": 109050, "model_us": 496299, "post_us": 9357, "total_us": 614711, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 1, "warmup": false, "run": 8, "pre_us": 109047, "model_us": 496361, "post_us": 9358, "total_us": 614771, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 1, "warmup": false, "run": 9, "pre_us": 109050, "model_us": 496316, "post_us": 9358, "total_us": 614729, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 1, "warmup": false, "run": 10, "pre_us": 109046, "model_us": 496277, "post_us": 9355, "total_us": 614683, "boxes": 1, "core": 1}
+{"type": "box", "sample": "line15", "size": 320, "index": 0, "score": 0.789729, "points": [51, 327, 643, 327, 643, 365, 51, 365]}
+{"type": "model", "sample": "line15", "size": 320, "batch": 2, "init_us": 291897, "input": [1, 320, 320, 3], "output": [1, 320, 320, 1], "valid": true, "free_internal": 133207, "free_psram": 22514604}
+{"type": "run", "sample": "line15", "size": 320, "batch": 2, "warmup": true, "run": 1, "pre_us": 109069, "model_us": 496356, "post_us": 9367, "total_us": 614798, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 2, "warmup": true, "run": 2, "pre_us": 109050, "model_us": 496299, "post_us": 9360, "total_us": 614714, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 2, "warmup": true, "run": 3, "pre_us": 109048, "model_us": 496311, "post_us": 9358, "total_us": 614722, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 2, "warmup": false, "run": 11, "pre_us": 109049, "model_us": 496380, "post_us": 9361, "total_us": 614795, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 2, "warmup": false, "run": 12, "pre_us": 109047, "model_us": 496306, "post_us": 9358, "total_us": 614716, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 2, "warmup": false, "run": 13, "pre_us": 109049, "model_us": 496310, "post_us": 9358, "total_us": 614722, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 2, "warmup": false, "run": 14, "pre_us": 109045, "model_us": 496301, "post_us": 9358, "total_us": 614709, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 2, "warmup": false, "run": 15, "pre_us": 109042, "model_us": 496377, "post_us": 9362, "total_us": 614786, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 2, "warmup": false, "run": 16, "pre_us": 109044, "model_us": 496283, "post_us": 9358, "total_us": 614690, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 2, "warmup": false, "run": 17, "pre_us": 109044, "model_us": 496292, "post_us": 9357, "total_us": 614698, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 2, "warmup": false, "run": 18, "pre_us": 109044, "model_us": 496321, "post_us": 9360, "total_us": 614730, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 2, "warmup": false, "run": 19, "pre_us": 109047, "model_us": 496311, "post_us": 9361, "total_us": 614724, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 320, "batch": 2, "warmup": false, "run": 20, "pre_us": 109043, "model_us": 496367, "post_us": 9360, "total_us": 614775, "boxes": 1, "core": 1}
+{"type": "model", "sample": "line15", "size": 736, "batch": 2, "init_us": 343433, "input": [1, 736, 736, 3], "output": [1, 736, 736, 1], "valid": true, "free_internal": 133167, "free_psram": 10673608}
+{"type": "run", "sample": "line15", "size": 736, "batch": 2, "warmup": true, "run": 1, "pre_us": 526918, "model_us": 2892061, "post_us": 46604, "total_us": 3465588, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 2, "warmup": true, "run": 2, "pre_us": 526948, "model_us": 2892055, "post_us": 46589, "total_us": 3465597, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 2, "warmup": true, "run": 3, "pre_us": 526331, "model_us": 2892040, "post_us": 46595, "total_us": 3464971, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 2, "warmup": false, "run": 11, "pre_us": 526466, "model_us": 2891842, "post_us": 46587, "total_us": 3464900, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 2, "warmup": false, "run": 12, "pre_us": 526741, "model_us": 2891910, "post_us": 46605, "total_us": 3465261, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 2, "warmup": false, "run": 13, "pre_us": 526300, "model_us": 2892146, "post_us": 46601, "total_us": 3465052, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 2, "warmup": false, "run": 14, "pre_us": 526630, "model_us": 2891888, "post_us": 46595, "total_us": 3465118, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 2, "warmup": false, "run": 15, "pre_us": 525683, "model_us": 2891955, "post_us": 46597, "total_us": 3464240, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 2, "warmup": false, "run": 16, "pre_us": 526568, "model_us": 2892011, "post_us": 46590, "total_us": 3465174, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 2, "warmup": false, "run": 17, "pre_us": 526226, "model_us": 2891919, "post_us": 46598, "total_us": 3464748, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 2, "warmup": false, "run": 18, "pre_us": 526738, "model_us": 2891905, "post_us": 46596, "total_us": 3465244, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 2, "warmup": false, "run": 19, "pre_us": 526412, "model_us": 2891780, "post_us": 46590, "total_us": 3464787, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line15", "size": 736, "batch": 2, "warmup": false, "run": 20, "pre_us": 526179, "model_us": 2891892, "post_us": 46598, "total_us": 3464674, "boxes": 1, "core": 1}
+{"type": "model", "sample": "line15", "size": 736, "batch": 0, "init_us": 0, "input": [1, 736, 736, 3], "output": [1, 736, 736, 1], "valid": true, "free_internal": 133043, "free_psram": 10673560}
+{"type": "ocr", "sample": "line15", "size": 736, "index": 0, "score": 0.99987, "accepted": true, "text": "上海市徐汇区田林路智能硬件中心", "points": [55, 329, 641, 329, 641, 364, 55, 364]}
+{"type": "quality_done", "sample": "line15", "size": 736, "boxes": 1}
+{"type": "model", "sample": "line15", "size": 320, "batch": 0, "init_us": 0, "input": [1, 320, 320, 3], "output": [1, 320, 320, 1], "valid": true, "free_internal": 133055, "free_psram": 22514584}
+{"type": "ocr", "sample": "line15", "size": 320, "index": 0, "score": 0.998969, "accepted": true, "text": "上海市徐汇区田林路智能硬件中心", "points": [51, 327, 643, 327, 643, 365, 51, 365]}
+{"type": "quality_done", "sample": "line15", "size": 320, "boxes": 1}
+{"type": "image", "sample": "line2", "width": 736, "height": 736, "decode_us": 131064}
+{"type": "model", "sample": "line2", "size": 736, "batch": 1, "init_us": 351681, "input": [1, 736, 736, 3], "output": [1, 736, 736, 1], "valid": true, "free_internal": 133031, "free_psram": 10673608}
+{"type": "run", "sample": "line2", "size": 736, "batch": 1, "warmup": true, "run": 1, "pre_us": 527231, "model_us": 2891979, "post_us": 34142, "total_us": 3453357, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 1, "warmup": true, "run": 2, "pre_us": 527212, "model_us": 2892055, "post_us": 34143, "total_us": 3453415, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 1, "warmup": true, "run": 3, "pre_us": 527366, "model_us": 2891828, "post_us": 34139, "total_us": 3453338, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 1, "warmup": false, "run": 1, "pre_us": 526636, "model_us": 2891845, "post_us": 34144, "total_us": 3452630, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 1, "warmup": false, "run": 2, "pre_us": 527019, "model_us": 2891951, "post_us": 34144, "total_us": 3453119, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 1, "warmup": false, "run": 3, "pre_us": 527010, "model_us": 2892106, "post_us": 34141, "total_us": 3453262, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 1, "warmup": false, "run": 4, "pre_us": 526839, "model_us": 2891909, "post_us": 34138, "total_us": 3452891, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 1, "warmup": false, "run": 5, "pre_us": 526233, "model_us": 2891823, "post_us": 34142, "total_us": 3452204, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 1, "warmup": false, "run": 6, "pre_us": 526665, "model_us": 2891806, "post_us": 34140, "total_us": 3452617, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 1, "warmup": false, "run": 7, "pre_us": 527676, "model_us": 2891741, "post_us": 34141, "total_us": 3453563, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 1, "warmup": false, "run": 8, "pre_us": 527102, "model_us": 2891726, "post_us": 34143, "total_us": 3452976, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 1, "warmup": false, "run": 9, "pre_us": 526421, "model_us": 2891658, "post_us": 34139, "total_us": 3452223, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 1, "warmup": false, "run": 10, "pre_us": 526800, "model_us": 2891779, "post_us": 34137, "total_us": 3452721, "boxes": 1, "core": 1}
+{"type": "box", "sample": "line2", "size": 736, "index": 0, "score": 0.820714, "points": [44, 320, 132, 320, 132, 373, 44, 373]}
+{"type": "model", "sample": "line2", "size": 320, "batch": 1, "init_us": 292735, "input": [1, 320, 320, 3], "output": [1, 320, 320, 1], "valid": true, "free_internal": 133187, "free_psram": 22514632}
+{"type": "run", "sample": "line2", "size": 320, "batch": 1, "warmup": true, "run": 1, "pre_us": 109113, "model_us": 496469, "post_us": 6273, "total_us": 611860, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 1, "warmup": true, "run": 2, "pre_us": 109106, "model_us": 496380, "post_us": 6274, "total_us": 611766, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 1, "warmup": true, "run": 3, "pre_us": 109110, "model_us": 496311, "post_us": 6270, "total_us": 611697, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 1, "warmup": false, "run": 1, "pre_us": 109107, "model_us": 496349, "post_us": 6271, "total_us": 611733, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 1, "warmup": false, "run": 2, "pre_us": 109111, "model_us": 496322, "post_us": 6269, "total_us": 611708, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 1, "warmup": false, "run": 3, "pre_us": 109106, "model_us": 496369, "post_us": 6272, "total_us": 611752, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 1, "warmup": false, "run": 4, "pre_us": 109111, "model_us": 496332, "post_us": 6272, "total_us": 611720, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 1, "warmup": false, "run": 5, "pre_us": 109112, "model_us": 496333, "post_us": 6272, "total_us": 611722, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 1, "warmup": false, "run": 6, "pre_us": 109108, "model_us": 496346, "post_us": 6272, "total_us": 611732, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 1, "warmup": false, "run": 7, "pre_us": 109106, "model_us": 496362, "post_us": 6272, "total_us": 611745, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 1, "warmup": false, "run": 8, "pre_us": 109105, "model_us": 496328, "post_us": 6270, "total_us": 611708, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 1, "warmup": false, "run": 9, "pre_us": 109100, "model_us": 496342, "post_us": 6271, "total_us": 611718, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 1, "warmup": false, "run": 10, "pre_us": 109105, "model_us": 496334, "post_us": 6271, "total_us": 611715, "boxes": 1, "core": 1}
+{"type": "box", "sample": "line2", "size": 320, "index": 0, "score": 0.876573, "points": [40, 323, 130, 323, 130, 374, 40, 374]}
+{"type": "model", "sample": "line2", "size": 320, "batch": 2, "init_us": 291973, "input": [1, 320, 320, 3], "output": [1, 320, 320, 1], "valid": true, "free_internal": 133219, "free_psram": 22514604}
+{"type": "run", "sample": "line2", "size": 320, "batch": 2, "warmup": true, "run": 1, "pre_us": 109117, "model_us": 496462, "post_us": 6272, "total_us": 611857, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 2, "warmup": true, "run": 2, "pre_us": 109108, "model_us": 496297, "post_us": 6268, "total_us": 611678, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 2, "warmup": true, "run": 3, "pre_us": 109105, "model_us": 496279, "post_us": 6269, "total_us": 611658, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 2, "warmup": false, "run": 11, "pre_us": 109109, "model_us": 496314, "post_us": 6270, "total_us": 611698, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 2, "warmup": false, "run": 12, "pre_us": 109105, "model_us": 496311, "post_us": 6270, "total_us": 611692, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 2, "warmup": false, "run": 13, "pre_us": 109111, "model_us": 496239, "post_us": 6267, "total_us": 611622, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 2, "warmup": false, "run": 14, "pre_us": 109105, "model_us": 496314, "post_us": 6269, "total_us": 611693, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 2, "warmup": false, "run": 15, "pre_us": 109101, "model_us": 496257, "post_us": 6267, "total_us": 611630, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 2, "warmup": false, "run": 16, "pre_us": 109106, "model_us": 496257, "post_us": 6267, "total_us": 611635, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 2, "warmup": false, "run": 17, "pre_us": 109103, "model_us": 496267, "post_us": 6268, "total_us": 611643, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 2, "warmup": false, "run": 18, "pre_us": 109103, "model_us": 496272, "post_us": 6267, "total_us": 611647, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 2, "warmup": false, "run": 19, "pre_us": 109101, "model_us": 496244, "post_us": 6269, "total_us": 611619, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 320, "batch": 2, "warmup": false, "run": 20, "pre_us": 109105, "model_us": 496277, "post_us": 6268, "total_us": 611655, "boxes": 1, "core": 1}
+{"type": "model", "sample": "line2", "size": 736, "batch": 2, "init_us": 343979, "input": [1, 736, 736, 3], "output": [1, 736, 736, 1], "valid": true, "free_internal": 133155, "free_psram": 10673580}
+{"type": "run", "sample": "line2", "size": 736, "batch": 2, "warmup": true, "run": 1, "pre_us": 527007, "model_us": 2891673, "post_us": 34144, "total_us": 3452829, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 2, "warmup": true, "run": 2, "pre_us": 526836, "model_us": 2891474, "post_us": 34144, "total_us": 3452459, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 2, "warmup": true, "run": 3, "pre_us": 526650, "model_us": 2891652, "post_us": 34144, "total_us": 3452451, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 2, "warmup": false, "run": 11, "pre_us": 527006, "model_us": 2891625, "post_us": 34138, "total_us": 3452774, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 2, "warmup": false, "run": 12, "pre_us": 526609, "model_us": 2891730, "post_us": 34144, "total_us": 3452488, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 2, "warmup": false, "run": 13, "pre_us": 527166, "model_us": 2891686, "post_us": 34144, "total_us": 3453001, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 2, "warmup": false, "run": 14, "pre_us": 526938, "model_us": 2891517, "post_us": 34141, "total_us": 3452601, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 2, "warmup": false, "run": 15, "pre_us": 526889, "model_us": 2891447, "post_us": 34141, "total_us": 3452482, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 2, "warmup": false, "run": 16, "pre_us": 526981, "model_us": 2891798, "post_us": 34143, "total_us": 3452927, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 2, "warmup": false, "run": 17, "pre_us": 527064, "model_us": 2891386, "post_us": 34139, "total_us": 3452594, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 2, "warmup": false, "run": 18, "pre_us": 526423, "model_us": 2891577, "post_us": 34142, "total_us": 3452147, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 2, "warmup": false, "run": 19, "pre_us": 526919, "model_us": 2891545, "post_us": 34141, "total_us": 3452610, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line2", "size": 736, "batch": 2, "warmup": false, "run": 20, "pre_us": 526692, "model_us": 2891686, "post_us": 34144, "total_us": 3452527, "boxes": 1, "core": 1}
+{"type": "model", "sample": "line2", "size": 736, "batch": 0, "init_us": 0, "input": [1, 736, 736, 3], "output": [1, 736, 736, 1], "valid": true, "free_internal": 133151, "free_psram": 10673580}
+{"type": "ocr", "sample": "line2", "size": 736, "index": 0, "score": 1.0, "accepted": true, "text": "上海", "points": [44, 320, 132, 320, 132, 373, 44, 373]}
+{"type": "quality_done", "sample": "line2", "size": 736, "boxes": 1}
+{"type": "model", "sample": "line2", "size": 320, "batch": 0, "init_us": 0, "input": [1, 320, 320, 3], "output": [1, 320, 320, 1], "valid": true, "free_internal": 133595, "free_psram": 22514604}
+{"type": "ocr", "sample": "line2", "size": 320, "index": 0, "score": 1.0, "accepted": true, "text": "上海", "points": [40, 323, 130, 323, 130, 374, 40, 374]}
+{"type": "quality_done", "sample": "line2", "size": 320, "boxes": 1}
+{"type": "image", "sample": "line3", "width": 736, "height": 736, "decode_us": 131466}
+{"type": "model", "sample": "line3", "size": 736, "batch": 1, "init_us": 347758, "input": [1, 736, 736, 3], "output": [1, 736, 736, 1], "valid": true, "free_internal": 133171, "free_psram": 10673588}
+{"type": "run", "sample": "line3", "size": 736, "batch": 1, "warmup": true, "run": 1, "pre_us": 527541, "model_us": 2891698, "post_us": 35560, "total_us": 3454805, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 1, "warmup": true, "run": 2, "pre_us": 526760, "model_us": 2891516, "post_us": 35557, "total_us": 3453839, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 1, "warmup": true, "run": 3, "pre_us": 526778, "model_us": 2891489, "post_us": 35555, "total_us": 3453827, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 1, "warmup": false, "run": 1, "pre_us": 527084, "model_us": 2891548, "post_us": 35558, "total_us": 3454195, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 1, "warmup": false, "run": 2, "pre_us": 526803, "model_us": 2891524, "post_us": 35560, "total_us": 3453892, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 1, "warmup": false, "run": 3, "pre_us": 527022, "model_us": 2891527, "post_us": 35557, "total_us": 3454111, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 1, "warmup": false, "run": 4, "pre_us": 527142, "model_us": 2891541, "post_us": 35557, "total_us": 3454245, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 1, "warmup": false, "run": 5, "pre_us": 526966, "model_us": 2891504, "post_us": 35558, "total_us": 3454033, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 1, "warmup": false, "run": 6, "pre_us": 526950, "model_us": 2891499, "post_us": 35556, "total_us": 3454010, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 1, "warmup": false, "run": 7, "pre_us": 527392, "model_us": 2891524, "post_us": 35559, "total_us": 3454480, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 1, "warmup": false, "run": 8, "pre_us": 526967, "model_us": 2891564, "post_us": 35558, "total_us": 3454094, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 1, "warmup": false, "run": 9, "pre_us": 526650, "model_us": 2891646, "post_us": 35555, "total_us": 3453856, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 1, "warmup": false, "run": 10, "pre_us": 526580, "model_us": 2891496, "post_us": 35558, "total_us": 3453639, "boxes": 1, "core": 1}
+{"type": "box", "sample": "line3", "size": 736, "index": 0, "score": 0.886306, "points": [42, 321, 171, 321, 171, 373, 42, 373]}
+{"type": "model", "sample": "line3", "size": 320, "batch": 1, "init_us": 290607, "input": [1, 320, 320, 3], "output": [1, 320, 320, 1], "valid": true, "free_internal": 133219, "free_psram": 22514612}
+{"type": "run", "sample": "line3", "size": 320, "batch": 1, "warmup": true, "run": 1, "pre_us": 109107, "model_us": 496578, "post_us": 6570, "total_us": 612260, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 1, "warmup": true, "run": 2, "pre_us": 109099, "model_us": 496296, "post_us": 6562, "total_us": 611962, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 1, "warmup": true, "run": 3, "pre_us": 109099, "model_us": 496359, "post_us": 6570, "total_us": 612034, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 1, "warmup": false, "run": 1, "pre_us": 109103, "model_us": 496329, "post_us": 6567, "total_us": 612004, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 1, "warmup": false, "run": 2, "pre_us": 109103, "model_us": 496220, "post_us": 6559, "total_us": 611887, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 1, "warmup": false, "run": 3, "pre_us": 109097, "model_us": 496348, "post_us": 6568, "total_us": 612018, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 1, "warmup": false, "run": 4, "pre_us": 109101, "model_us": 496340, "post_us": 6569, "total_us": 612015, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 1, "warmup": false, "run": 5, "pre_us": 109101, "model_us": 496296, "post_us": 6562, "total_us": 611964, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 1, "warmup": false, "run": 6, "pre_us": 109103, "model_us": 496324, "post_us": 6568, "total_us": 612000, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 1, "warmup": false, "run": 7, "pre_us": 109100, "model_us": 496368, "post_us": 6569, "total_us": 612042, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 1, "warmup": false, "run": 8, "pre_us": 109096, "model_us": 496348, "post_us": 6568, "total_us": 612017, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 1, "warmup": false, "run": 9, "pre_us": 109104, "model_us": 496365, "post_us": 6568, "total_us": 612042, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 1, "warmup": false, "run": 10, "pre_us": 109094, "model_us": 496356, "post_us": 6570, "total_us": 612025, "boxes": 1, "core": 1}
+{"type": "box", "sample": "line3", "size": 320, "index": 0, "score": 0.940447, "points": [42, 323, 170, 323, 170, 372, 42, 372]}
+{"type": "model", "sample": "line3", "size": 320, "batch": 2, "init_us": 292155, "input": [1, 320, 320, 3], "output": [1, 320, 320, 1], "valid": true, "free_internal": 133207, "free_psram": 22514604}
+{"type": "run", "sample": "line3", "size": 320, "batch": 2, "warmup": true, "run": 1, "pre_us": 109107, "model_us": 496492, "post_us": 6566, "total_us": 612170, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 2, "warmup": true, "run": 2, "pre_us": 109101, "model_us": 496330, "post_us": 6557, "total_us": 612000, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 2, "warmup": true, "run": 3, "pre_us": 109104, "model_us": 496236, "post_us": 6555, "total_us": 611900, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 2, "warmup": false, "run": 11, "pre_us": 109095, "model_us": 496306, "post_us": 6556, "total_us": 611962, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 2, "warmup": false, "run": 12, "pre_us": 109104, "model_us": 496284, "post_us": 6556, "total_us": 611949, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 2, "warmup": false, "run": 13, "pre_us": 109103, "model_us": 496352, "post_us": 6564, "total_us": 612024, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 2, "warmup": false, "run": 14, "pre_us": 109095, "model_us": 496370, "post_us": 6565, "total_us": 612035, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 2, "warmup": false, "run": 15, "pre_us": 109099, "model_us": 496316, "post_us": 6557, "total_us": 611977, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 2, "warmup": false, "run": 16, "pre_us": 109101, "model_us": 496372, "post_us": 6565, "total_us": 612043, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 2, "warmup": false, "run": 17, "pre_us": 109093, "model_us": 496335, "post_us": 6558, "total_us": 611991, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 2, "warmup": false, "run": 18, "pre_us": 109099, "model_us": 496334, "post_us": 6562, "total_us": 612000, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 2, "warmup": false, "run": 19, "pre_us": 109098, "model_us": 496299, "post_us": 6556, "total_us": 611959, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 320, "batch": 2, "warmup": false, "run": 20, "pre_us": 109095, "model_us": 496328, "post_us": 6557, "total_us": 611985, "boxes": 1, "core": 1}
+{"type": "model", "sample": "line3", "size": 736, "batch": 2, "init_us": 343122, "input": [1, 736, 736, 3], "output": [1, 736, 736, 1], "valid": true, "free_internal": 133251, "free_psram": 10673556}
+{"type": "run", "sample": "line3", "size": 736, "batch": 2, "warmup": true, "run": 1, "pre_us": 527203, "model_us": 2892373, "post_us": 35562, "total_us": 3455143, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 2, "warmup": true, "run": 2, "pre_us": 527293, "model_us": 2892002, "post_us": 35557, "total_us": 3454857, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 2, "warmup": true, "run": 3, "pre_us": 527167, "model_us": 2891970, "post_us": 35558, "total_us": 3454700, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 2, "warmup": false, "run": 11, "pre_us": 527210, "model_us": 2891980, "post_us": 35555, "total_us": 3454750, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 2, "warmup": false, "run": 12, "pre_us": 527246, "model_us": 2892143, "post_us": 35557, "total_us": 3454951, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 2, "warmup": false, "run": 13, "pre_us": 526672, "model_us": 2891828, "post_us": 35559, "total_us": 3454064, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 2, "warmup": false, "run": 14, "pre_us": 526770, "model_us": 2892155, "post_us": 35556, "total_us": 3454486, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 2, "warmup": false, "run": 15, "pre_us": 527017, "model_us": 2892015, "post_us": 35554, "total_us": 3454591, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 2, "warmup": false, "run": 16, "pre_us": 527151, "model_us": 2891939, "post_us": 35556, "total_us": 3454651, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 2, "warmup": false, "run": 17, "pre_us": 526997, "model_us": 2891939, "post_us": 35559, "total_us": 3454500, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 2, "warmup": false, "run": 18, "pre_us": 526752, "model_us": 2891880, "post_us": 35555, "total_us": 3454192, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 2, "warmup": false, "run": 19, "pre_us": 526415, "model_us": 2891987, "post_us": 35555, "total_us": 3453962, "boxes": 1, "core": 1}
+{"type": "run", "sample": "line3", "size": 736, "batch": 2, "warmup": false, "run": 20, "pre_us": 526515, "model_us": 2891988, "post_us": 35558, "total_us": 3454066, "boxes": 1, "core": 1}
+{"type": "model", "sample": "line3", "size": 736, "batch": 0, "init_us": 0, "input": [1, 736, 736, 3], "output": [1, 736, 736, 1], "valid": true, "free_internal": 133175, "free_psram": 10673608}
+{"type": "ocr", "sample": "line3", "size": 736, "index": 0, "score": 0.999997, "accepted": true, "text": "上海市", "points": [42, 321, 171, 321, 171, 373, 42, 373]}
+{"type": "quality_done", "sample": "line3", "size": 736, "boxes": 1}
+{"type": "model", "sample": "line3", "size": 320, "batch": 0, "init_us": 0, "input": [1, 320, 320, 3], "output": [1, 320, 320, 1], "valid": true, "free_internal": 133395, "free_psram": 22514604}
+{"type": "ocr", "sample": "line3", "size": 320, "index": 0, "score": 0.999998, "accepted": true, "text": "上海市", "points": [42, 323, 170, 323, 170, 372, 42, 372]}
+{"type": "quality_done", "sample": "line3", "size": 320, "boxes": 1}
+{"type": "done"}

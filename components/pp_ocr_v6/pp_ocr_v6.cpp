@@ -1,6 +1,7 @@
 #include "pp_ocr_v6.hpp"
 #include "esp_heap_caps.h"
 #include "esp_log.h"
+#include "esp_timer.h"
 #include "pp_ocr_v6_det_postprocessor.hpp"
 #include "pp_ocr_v6_image_preprocessor.hpp"
 #include "pp_ocr_v6_rec_postprocessor.hpp"
@@ -24,15 +25,22 @@ static const char *model_path = "pp_ocr_v6";
 static const char *TAG = "pp_ocr_v6";
 
 namespace pp_ocr_v6 {
-Det::Det(const char *model_name) :
+Det::Det(const char *model_name, int input_size) :
     m_model(nullptr), m_image_preprocessor(nullptr), m_postprocessor(nullptr), m_letterbox_img({}), m_resize_scale(1.0f)
 {
+    std::map<std::string, std::vector<int>> shapes;
+    if (input_size != 0) {
+        assert(input_size > 0 && input_size % 32 == 0);
+        shapes.emplace("x", std::vector<int>{1, input_size, input_size, 3});
+    }
 #if CONFIG_PP_OCR_V6_MODEL_IN_SDCARD
     auto sd_path = std::filesystem::path(CONFIG_BSP_SD_MOUNT_POINT) / CONFIG_PP_OCR_V6_MODEL_SDCARD_DIR / model_name;
-    m_model = new dl::Model(sd_path.c_str(), fbs::MODEL_LOCATION_IN_SDCARD);
+    m_model = new dl::Model(sd_path.c_str(), fbs::MODEL_LOCATION_IN_SDCARD,
+                            0, dl::MEMORY_MANAGER_GREEDY, nullptr, true, shapes);
 #else
     m_model =
-        new dl::Model(model_path, model_name, static_cast<fbs::model_location_type_t>(CONFIG_PP_OCR_V6_MODEL_LOCATION));
+        new dl::Model(model_path, model_name, static_cast<fbs::model_location_type_t>(CONFIG_PP_OCR_V6_MODEL_LOCATION),
+                       0, dl::MEMORY_MANAGER_GREEDY, nullptr, true, shapes);
 #endif
     m_model->minimize();
     m_image_preprocessor =
@@ -62,8 +70,28 @@ Det::~Det()
     delete m_model;
 }
 
-std::vector<TextBox> Det::run(const dl::image::img_t &img)
+std::vector<int> Det::input_shape() const
 {
+    const auto inputs = m_model->get_inputs();
+    return inputs.empty() ? std::vector<int>{} : inputs.begin()->second->shape;
+}
+
+std::vector<int> Det::output_shape() const
+{
+    const auto outputs = m_model->get_outputs();
+    return outputs.empty() ? std::vector<int>{} : outputs.begin()->second->shape;
+}
+
+std::vector<TextBox> Det::run(const dl::image::img_t &img, DetTiming *timing)
+{
+    if (timing) {
+        *timing = {};
+    }
+    if (!img.data || !img.width || !img.height || !ready()) {
+        ESP_LOGE(TAG, "Invalid detection image or unavailable letterbox buffer");
+        return {};
+    }
+    const int64_t start_us = timing ? esp_timer_get_time() : 0;
     DL_LOG_INFER_LATENCY_INIT();
     DL_LOG_INFER_LATENCY_START();
     int model_w = m_letterbox_img.width;
@@ -77,14 +105,22 @@ std::vector<TextBox> Det::run(const dl::image::img_t &img)
     resize_h = std::min(resize_h, model_h);
     bilinear_letterbox_top_left(img, m_letterbox_img, resize_w, resize_h);
     m_image_preprocessor->preprocess(m_letterbox_img);
+    const int64_t pre_end_us = timing ? esp_timer_get_time() : 0;
     DL_LOG_INFER_LATENCY_END_PRINT("det", "pre");
 
     DL_LOG_INFER_LATENCY_START();
     m_model->run();
+    const int64_t model_end_us = timing ? esp_timer_get_time() : 0;
     DL_LOG_INFER_LATENCY_END_PRINT("det", "model");
 
     DL_LOG_INFER_LATENCY_START();
     auto boxes = m_postprocessor->postprocess(img, m_resize_scale, model_w, model_h);
+    if (timing) {
+        const int64_t end_us = esp_timer_get_time();
+        timing->preprocess_us = pre_end_us - start_us;
+        timing->model_us = model_end_us - pre_end_us;
+        timing->postprocess_us = end_us - model_end_us;
+    }
     DL_LOG_INFER_LATENCY_END_PRINT("det", "post");
 
     return boxes;
@@ -188,13 +224,15 @@ static const char *rec_wide_model_name_for()
 #endif
 }
 
-PPOCRV6::PPOCRV6(RecMode rec_mode, RecModel rec_type) :
-    m_det(),
+PPOCRV6::PPOCRV6(RecMode rec_mode, RecModel rec_type, int det_input_size) :
+    m_det("pp_ocr_v6_det_s8.espdl", det_input_size),
     m_rec(rec_model_name_for(rec_type)),
     m_rec_long(nullptr),
     m_dual_aspect_ratio_threshold(0.0),
     m_rec_score_threshold(default_rec_score_threshold)
 {
+    const auto shape = m_det.input_shape();
+    ESP_LOGI(TAG, "Detect input: %d x %d", shape[2], shape[1]);
     if (rec_mode == RecMode::Dual) {
         const char *wide = rec_wide_model_name_for();
         if (wide) {

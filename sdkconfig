@@ -1384,6 +1384,12 @@ CONFIG_PARTITION_TABLE_MD5=y
 # end of Partition Table
 
 #
+# OCR application
+#
+# CONFIG_APP_OCR_BENCHMARK is not set
+# end of OCR application
+
+#
 # Compiler options
 #
 CONFIG_COMPILER_OPTIMIZATION_DEBUG=y

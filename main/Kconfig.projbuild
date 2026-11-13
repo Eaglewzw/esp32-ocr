@@ -1,0 +1,10 @@
+menu "OCR application"
+    config APP_OCR_BENCHMARK
+        bool "Run the controlled 736/320 detection experiment"
+        default n
+        depends on PP_OCR_V6_REC_S16 && PP_OCR_V6_MODEL_IN_FLASH_RODATA
+        help
+            Show a static experiment screen and wait for 'b' on the console.
+            Runs 160 measured detections plus 48 warmups, then reports DONE.
+            Disable to return to the normal image selector.
+endmenu
